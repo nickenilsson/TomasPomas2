@@ -9,16 +9,28 @@
 #import "RootViewController.h"
 #import "FilmContentViewController.h"
 #import "TvContentViewController.h"
+#import "ViewControllerHandler.h"
 
 #define ANIMATION_DURATION 0.2
-#define MAX_PAN_WIDTH 400
+#define SHADOW_FADE_IN_TIME 0.1
+#define DURATION_POP_OVER_SLIDE 1
 
 @interface RootViewController ()
 
-@property (nonatomic, strong) MainMenuViewController *mainmenuViewController;
-@property (nonatomic, strong) UIViewController *currentContentViewController;
+@property (strong, nonatomic) MainMenuViewController *mainmenuViewController;
+@property (strong, nonatomic) ContentViewController *currentContentViewController;
+@property (strong, nonatomic) ViewControllerHandler *viewControllerHandler;
+@property (strong, nonatomic) UIView *shadowView;
 @property (nonatomic) CGPoint centerOfScreen;
 @property (nonatomic) BOOL menuIsActive;
+@property (strong, nonatomic) NSMutableArray *popOverViewControllers;
+@property (strong, nonatomic) UIView *popOverPlaceholder;
+@property (nonatomic) CGFloat maxPanWidth;
+@property (nonatomic) BOOL contentWindowIsSmall;
+@property (nonatomic) CGFloat shrinkingDistance;
+@property (strong, nonatomic) NSLayoutConstraint *contentTrailingConstraint;
+
+
 
 @end
 
@@ -36,10 +48,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.centerOfScreen = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-    [self addContentViewController:[[TvContentViewController alloc] init]];
-    [self setFrameForContentViewController];
+    self.contentWindowIsSmall = NO;
+    self.shrinkingDistance = -self.view.frame.size.width/3;
+    self.maxPanWidth = self.view.bounds.size.width/3;
+    [self.placeholderForViews setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.topBar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.viewControllerHandler = [[ViewControllerHandler alloc]init];
     
+    self.centerOfScreen = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+    [self menuItemSelectedWithIndex:0];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,24 +75,39 @@
 }
 
 - (IBAction)buttonResizePressed:(id)sender {
+    
+    CGFloat newConstant;
+    if (self.contentWindowIsSmall) {
+        newConstant = 0;
+    }else{
+        newConstant = self.shrinkingDistance;
+    }
+    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.contentTrailingConstraint.constant = newConstant;
+        [self.view layoutIfNeeded];
+        self.contentWindowIsSmall = !self.contentWindowIsSmall;
+    } completion:^(BOOL finished){
+    
+    }];
+    
 }
 
-- (IBAction)panGestureHappened:(id)sender {
-    
-    [self addMainMenu];
+- (IBAction)panGestureHappened:(id)sender
+{
     CGPoint translation = [sender translationInView:self.view];
     
-    CGPoint newCenter = CGPointMake(self.placeholderForViews.center.x + translation.x, self.placeholderForViews.center.y);
-    if (newCenter.x > self.centerOfScreen.x + MAX_PAN_WIDTH) {
-        newCenter.x = self.centerOfScreen.x + MAX_PAN_WIDTH;
-    }else if (newCenter.x < self.centerOfScreen.x){
-        newCenter.x = self.centerOfScreen.x;
+    [self addMainMenu];
+    
+    CGFloat newConstant = self.placeholderLeadingConstraint.constant + translation.x;
+    if (newConstant > self.maxPanWidth) {
+        newConstant = self.maxPanWidth;
+    }else if (newConstant < 0){
+        newConstant = 0;
     }
-    self.placeholderForViews.center = newCenter;
+    self.placeholderLeadingConstraint.constant = newConstant;
     
     if ([sender state] == UIGestureRecognizerStateEnded) {
-        CGFloat offset = self.placeholderForViews.center.x - self.centerOfScreen.x;
-        if (offset > MAX_PAN_WIDTH / 2) {
+        if (self.placeholderLeadingConstraint.constant > (self.maxPanWidth / 2)) {
             [self showMenuWithAnimation];
         }else{
             [self hideMenuWithAnimation];
@@ -93,9 +126,10 @@
 -(void) showMenuWithAnimation
 {
     [self addMainMenu];
-    CGPoint newCenter = CGPointMake(self.centerOfScreen.x + MAX_PAN_WIDTH, self.placeholderForViews.center.y);
+    CGFloat newConstant = self.maxPanWidth;
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.placeholderForViews.center = newCenter;
+        self.placeholderLeadingConstraint.constant = newConstant;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished){
         if (finished) {
             self.menuIsActive = YES;
@@ -109,14 +143,17 @@
         [self addChildViewController:self.mainmenuViewController];
         [self.mainmenuViewController didMoveToParentViewController:self];
         [self.placeholderForMenu addSubview:self.mainmenuViewController.view];
+        self.mainmenuViewController.delegate = (id) self;
     }
 }
 -(void) hideMenuWithAnimation
 {
     [self addMainMenu];
-    CGPoint newCenter = CGPointMake(self.centerOfScreen.x , self.placeholderForViews.center.y);
+    CGFloat newConstant = 0;
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.placeholderForViews.center = newCenter;
+        self.placeholderLeadingConstraint.constant = newConstant;
+        [self.view layoutIfNeeded];
+
     } completion:^(BOOL finished){
         if (finished) {
             self.menuIsActive = NO;
@@ -134,39 +171,62 @@
 }
 -(void) menuItemSelectedWithIndex:(NSUInteger)index
 {
-    UIViewController *viewControllerToAdd = [self getContentViewControllerCorrespondingToIndex:index];
+    [self removeCurrentContentViewController];
+    ContentViewController *viewControllerToAdd = [self.viewControllerHandler contentViewControllerCorrespondingToIndex:index];
     [self addContentViewController:viewControllerToAdd];
     [self setFrameForContentViewController];
+    [self hideMenuWithAnimation];
     
 }
--(void) addContentViewController:(UIViewController *) viewController
+-(void) removeCurrentContentViewController
+{
+    if(self.currentContentViewController != nil){
+        [self.currentContentViewController removeFromParentViewController];
+        [self.currentContentViewController.view removeFromSuperview];
+        self.currentContentViewController = nil;
+    }
+}
+-(void) addContentViewController:(ContentViewController *) viewController
 {
     [self addChildViewController:viewController];
     [viewController didMoveToParentViewController:self];
     [self.placeholderForViews addSubview:viewController.view];
+    viewController.delegate = (id) self;
     self.currentContentViewController = viewController;
 }
+
 -(void)setFrameForContentViewController
 {
-    [self.placeholderForViews setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.currentContentViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.placeholderForViews addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:@{@"contentView": self.currentContentViewController.view}]];
-    [self.placeholderForViews addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topBar][contentView]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"contentView" : self.currentContentViewController.view}]];
+
+    self.contentTrailingConstraint = [NSLayoutConstraint constraintWithItem:self.currentContentViewController.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.placeholderForViews attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+    [self.placeholderForViews addConstraint:self.contentTrailingConstraint];
+    
+    [self.placeholderForViews addConstraint:[NSLayoutConstraint constraintWithItem:self.currentContentViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.placeholderForViews attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    
+    
+    [self.placeholderForViews addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topBar][contentView]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"contentView" : self.currentContentViewController.view}]];
+    [self.view layoutIfNeeded];
 }
--(UIViewController *) getContentViewControllerCorrespondingToIndex: (NSUInteger) index
+// ContentViewControllerDelegate - called from current content view controller
+-(void) presentPopOverViewController:(UIViewController *) viewController
 {
-    UIViewController *viewController;
-    switch (index) {
-        case 0:{
-            viewController = [[TvContentViewController alloc]init];
-            break;
-        }
-        default:{
-            viewController = [[TvContentViewController alloc]init];
-            break;
-        }
-    }
-    return viewController;
+    [self addShadowView];
 }
+-(void) addShadowView
+{
+    self.shadowView = [[UIView alloc] init];
+    [self.placeholderForViews addSubview:self.shadowView];
+    [self.shadowView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.placeholderForViews addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[shadowView]|" options:0 metrics:nil views:@{@"shadowView": self.shadowView}]];
+    [self.placeholderForViews addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[shadowView]|" options:0 metrics:nil views:@{@"shadowView": self.shadowView}]];
+    self.shadowView.backgroundColor = [UIColor blackColor];
+    self.shadowView.alpha = 0;
+    
+    [UIView animateWithDuration:SHADOW_FADE_IN_TIME delay:0 options:SHADOW_FADE_IN_TIME animations:^{
+        self.shadowView.alpha = 0.6;
+    } completion:^(BOOL finished){} ];
+}
+
 
 @end

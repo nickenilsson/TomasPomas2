@@ -10,13 +10,19 @@
 
 @protocol ContentDisplayViewDelegate <NSObject>
 
+@optional
+-(void) objectSelectedInDisplayView:(id) object;
 -(void) setContainerScrollEnabled:(BOOL) value;
+-(void) setHeightConstraintInSuperView;
 
 @end
 
 @interface ContentDisplayView : UIViewController
 
 @property (weak, nonatomic) id <ContentDisplayViewDelegate> delegate;
+
 @property (strong, nonatomic) NSMutableArray *items;
+
+-(void) setWidth:(CGFloat) width;
 
 @end

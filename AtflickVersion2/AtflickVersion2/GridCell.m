@@ -1,20 +1,19 @@
 //
-//  ListCell.m
+//  GridCell.m
 //  AtflickVersion2
 //
 //  Created by Tomas Nilsson on 10/7/13.
 //  Copyright (c) 2013 Niklas Nilsson. All rights reserved.
 //
 
-#import "ListCell.h"
+#import "GridCell.h"
 
-@implementation ListCell
+@implementation GridCell
 
-+(UINib *)nib
++(UINib *) nib
 {
-    return [UINib nibWithNibName:@"ListCell" bundle:nil];
+    return [UINib nibWithNibName:@"GridCell" bundle:nil];
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

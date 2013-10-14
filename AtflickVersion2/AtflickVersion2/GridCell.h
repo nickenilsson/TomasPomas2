@@ -1,5 +1,5 @@
 //
-//  ListCell.h
+//  GridCell.h
 //  AtflickVersion2
 //
 //  Created by Tomas Nilsson on 10/7/13.
@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListCell : UICollectionViewCell
+@interface GridCell : UICollectionViewCell
 
-+(UINib *)nib;
++(UINib *) nib;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
-@property (weak, nonatomic) IBOutlet UILabel *bigLabel;
-@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

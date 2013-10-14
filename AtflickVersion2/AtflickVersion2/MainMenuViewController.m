@@ -34,7 +34,7 @@ static NSString * const menuCellIdentifier = @"menuCellIdentifier";
 {
     [super viewDidLoad];
     
-    self.menuItems = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"MenuItem1",@"MenuItem2",@"MenuItem3",@"MenuItem4",@"MenuItem5", nil]];
+    self.menuItems = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"TV",@"Film",@"Yada yada",@"Conny",@"Tom Nilsson", nil]];
     [self setUpTableView];
     
 }

@@ -1,18 +1,18 @@
 //
-//  ContentDisplayView.m
+//  ContentViewController.m
 //  AtflickVersion2
 //
-//  Created by Tomas Nilsson on 10/1/13.
+//  Created by Tomas Nilsson on 10/2/13.
 //  Copyright (c) 2013 Niklas Nilsson. All rights reserved.
 //
 
-#import "ContentDisplayView.h"
+#import "ContentViewController.h"
 
-@interface ContentDisplayView ()
+@interface ContentViewController ()
 
 @end
 
-@implementation ContentDisplayView
+@implementation ContentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,8 +34,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(void) setWidth:(CGFloat) width
+-(void) superViewChangingToFrame:(CGRect)frame
 {
 
 }

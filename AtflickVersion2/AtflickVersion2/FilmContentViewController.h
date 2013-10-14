@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContentDisplayView.h"
+#import "ContentViewController.h"
+#import "DropDownMenu.h"
 
-@interface FilmContentViewController : UIViewController
+@interface FilmContentViewController : ContentViewController <ContentDisplayViewDelegate, DropDownMenuDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *contentOptionsBar;
+@property (weak, nonatomic) IBOutlet DropDownMenu *dropDownMenu;
 
 @end

@@ -8,13 +8,12 @@
 
 #import "TvContentViewController.h"
 #import "ContentOverviewViewController.h"
-#import "ListViewController.h"
 #import "ContentDisplayView.h"
-#import "ContentDisplayGrid.h"
 
 @interface TvContentViewController ()
 
 @property (strong, nonatomic) ContentDisplayView *currentDisplayViewController;
+@property (strong, nonatomic) NSArray *dropDownTitles;
 
 @end
 
@@ -35,11 +34,23 @@
     
     self.currentDisplayViewController = [[ContentOverviewViewController alloc]init];
     [self addChildViewController:self.currentDisplayViewController];
+    [self.currentDisplayViewController setWidth:self.view.frame.size.width];
     [self.contentPlaceholderScrollView addSubview:self.currentDisplayViewController.view];
+    [self.view sendSubviewToBack:self.contentPlaceholderScrollView];
     [self.currentDisplayViewController didMoveToParentViewController:self];
+    
+    self.dropDownTitles = [NSArray arrayWithObjects:@"Featured", @"Overview",@"New Movies",@"Popular",@"Recommended",  nil];
+    NSMutableArray *options = [[NSMutableArray alloc]initWithCapacity:0];
+    
+    for (int i = 0; i < self.dropDownTitles.count; i++) {
+        [options addObject:[NSNumber numberWithInt:i+1]];
+    }
+
+    [self.dropDownMenu setTitle:@"Overview"];
+    [self.dropDownMenu setSelectionOptions:options withTitles:self.dropDownTitles];
+    self.dropDownMenu.delegate = (id) self;
+    
     self.contentPlaceholderScrollView.contentSize = self.currentDisplayViewController.view.bounds.size;
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,40 +59,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)showContentGridStyle:(id)sender {
-    [self removeCurrentDisplayViewController];
-    self.currentDisplayViewController = [[ContentDisplayGrid alloc] init];
-    self.currentDisplayViewController.items = [NSMutableArray arrayWithObjects:@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1", nil];
-    [self addChildViewController:self.currentDisplayViewController];
-    [self.currentDisplayViewController didMoveToParentViewController:self];
-    [self.contentPlaceholderScrollView addSubview:self.currentDisplayViewController.view];
-    self.contentPlaceholderScrollView.contentSize = self.currentDisplayViewController.view.bounds.size;
-    
-}
-
-- (IBAction)showContentOverviewStyle:(id)sender {
-    [self removeCurrentDisplayViewController];
-    
-    
-}
-
-- (IBAction)showContentListStyle:(id)sender {
-    [self removeCurrentDisplayViewController];
-    self.currentDisplayViewController = [[ListViewController alloc] init];
-    self.currentDisplayViewController.items = [NSMutableArray arrayWithObjects:@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1",@"item 1", nil];
-    [self addChildViewController:self.currentDisplayViewController];
-    self.currentDisplayViewController.delegate = (id) self;
-    [self.currentDisplayViewController didMoveToParentViewController:self];
-    [self.contentPlaceholderScrollView addSubview:self.currentDisplayViewController.view];
-    self.contentPlaceholderScrollView.contentSize = self.currentDisplayViewController.view.bounds.size;
-
-    
-}
-
-- (IBAction)loadSomething:(id)sender {
-    
-    
-}
 -(void) removeCurrentDisplayViewController
 {
     [self.currentDisplayViewController removeFromParentViewController];
@@ -91,7 +68,23 @@
 -(void) setContainerScrollEnabled:(BOOL) value
 {
     self.contentPlaceholderScrollView.scrollEnabled = value;
-    NSLog(@"scrollEnabled = %i", self.contentPlaceholderScrollView.scrollEnabled);
 }
+
+- (void)dropDownControlView:(DropDownMenu *)view didFinishWithSelection:(id)selection
+{
+    if(selection != nil){
+        [self.dropDownMenu setTitle:[self.dropDownTitles objectAtIndex:[selection integerValue]-1]];
+    }
+}
+//Superview is changing it's frame
+-(void) superViewChangingToFrame:(CGRect)frame
+{
+    self.currentDisplayViewController.view.frame = CGRectMake(self.currentDisplayViewController.view.frame.origin.x, self.currentDisplayViewController.view.frame.origin.y, frame.size.width, self.currentDisplayViewController.view.frame.size.height);
+
+}
+
+
+
+
 
 @end

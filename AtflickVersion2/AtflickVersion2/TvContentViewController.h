@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentDisplayView.h"
+#import "ContentViewController.h"
+#import "DropDownMenu.h"
 
-@interface TvContentViewController : UIViewController <ContentDisplayViewDelegate>
+
+@interface TvContentViewController : ContentViewController <ContentDisplayViewDelegate, DropDownMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *contentPlaceholderScrollView;
-- (IBAction)showContentGridStyle:(id)sender;
-- (IBAction)showContentOverviewStyle:(id)sender;
-- (IBAction)showContentListStyle:(id)sender;
-- (IBAction)loadSomething:(id)sender;
+@property (weak, nonatomic) IBOutlet DropDownMenu *dropDownMenu;
 
 @end
