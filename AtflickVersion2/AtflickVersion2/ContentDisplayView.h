@@ -12,8 +12,6 @@
 
 @optional
 -(void) objectSelectedInDisplayView:(id) object;
--(void) setContainerScrollEnabled:(BOOL) value;
--(void) setHeightConstraintInSuperView;
 
 @end
 

@@ -32,7 +32,7 @@
     CGRect collectionViewBounds = self.collectionView.bounds;
     
     CGFloat itemHeight = collectionViewBounds.size.height;
-    CGFloat itemWidth = itemHeight*0.8;
+    CGFloat itemWidth = itemHeight*0.75;
     
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
 }

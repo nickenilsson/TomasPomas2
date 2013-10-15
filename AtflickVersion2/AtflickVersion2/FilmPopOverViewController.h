@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopOverView.h"
+
 @class Movie;
 
-@interface FilmPopOverViewController : UIViewController
+@interface FilmPopOverViewController : PopOverView <UICollectionViewDelegateFlowLayout>
 
 -(id) initWithMovieObject:(Movie *)movie;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *smallLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *labelDescription;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
 @end

@@ -8,7 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SmartCollectionViewController.h"
-#import "BigBannerCell.h"
+#import "ImageCell.h"
 #import "ArrayDataSource.h"
 #import "ListFlowLayout.h"
 #import "GridFlowLayout.h"
@@ -54,17 +54,16 @@ static NSString* const cellIdentifier = @"cellIdentifier";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.inListMode = YES;
-    [self.delegate setContainerScrollEnabled:NO];
-    [self.delegate setHeightConstraintInSuperView];
+    self.inListMode = NO;
+
     self.items = [NSMutableArray arrayWithObjects:@"item 1",@"Item 3",@"Item 4",@"Item 5",@"Item 6",@"Item 7",@"Item 8",@"Item 9",@"Item 10",@"Item 11",@"Item 12",@"Item 13",@"Item 14",@"Item 15",@"Item 16",@"Item 17",@"Item 18",@"Item 19",@"Item 20", nil];
-    [self.collectionView registerNib:[BigBannerCell nib] forCellWithReuseIdentifier:cellIdentifier];
+    [self.collectionView registerNib:[ImageCell nib] forCellWithReuseIdentifier:cellIdentifier];
     
-    CellConfigureBlock cellConfiguration = ^(BigBannerCell *cell, NSString *item){
+    CellConfigureBlock cellConfiguration = ^(ImageCell *cell, NSString *item){
         if ([self.collectionView.collectionViewLayout isKindOfClass:[ListFlowLayout class]]) {
             
         }
-        cell.label.text = item;
+        //cell.label.text = item;
         /*
         cell.layer.masksToBounds = NO;
         cell.layer.shadowOffset = CGSizeMake(0, 1);
@@ -78,7 +77,7 @@ static NSString* const cellIdentifier = @"cellIdentifier";
     self.datasource = [[ArrayDataSource alloc] initWithItems:self.items cellIdentifier:cellIdentifier configureCellBlock:cellConfiguration];
     self.collectionView.dataSource = self.datasource;
     self.collectionView.delegate = (id) self;
-    self.collectionView.collectionViewLayout = [[ListFlowLayout alloc] init];
+    self.collectionView.collectionViewLayout = [[GridFlowLayout alloc] init];
 
 }
 

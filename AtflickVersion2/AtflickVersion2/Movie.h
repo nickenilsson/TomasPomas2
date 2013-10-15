@@ -15,5 +15,8 @@
 @property (strong, nonatomic) NSString *imageURL;
 @property (strong, nonatomic) NSArray *actors;
 
+@property (strong, nonatomic) NSString *imageName;
+@property (strong, nonatomic) NSString *imageNameSmall;
+@property (strong, nonatomic) NSString *description;
 
 @end

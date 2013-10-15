@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ContentDisplayView.h"
 
-@interface OverviewController2 : ContentDisplayView
+@interface OverviewController2 : ContentDisplayView <UICollectionViewDelegateFlowLayout>
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;

@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BigBannerCell : UICollectionViewCell
+@interface ImageCell : UICollectionViewCell
 
 +(UINib *) nib;
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

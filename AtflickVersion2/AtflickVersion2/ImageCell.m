@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Niklas Nilsson. All rights reserved.
 //
 
-#import "BigBannerCell.h"
+#import "ImageCell.h"
 
-@implementation BigBannerCell
+@implementation ImageCell
 
 +(UINib *) nib
 {
-    return [UINib nibWithNibName:@"BigBannerCell" bundle:nil];
+    return [UINib nibWithNibName:@"ImageCell" bundle:nil];
 }
 
 - (id)initWithFrame:(CGRect)frame

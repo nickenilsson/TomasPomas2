@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "MainMenuViewController.h"
 #import "ContentViewController.h"
+#import "PopOverController.h"
 
-@interface RootViewController : UIViewController <MainMenuDelegate, ContentViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIView *placeholderForViews;
+@interface RootViewController : UIViewController <MainMenuDelegate, ContentViewControllerDelegate, PopOverControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
+@property (weak, nonatomic) IBOutlet UIView *mainPlaceholder;
 @property (weak, nonatomic) IBOutlet UIView *placeholderForMenu;
 @property (weak, nonatomic) IBOutlet UIView *topBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeholderLeadingConstraint;
+
 - (IBAction)buttonMenuPressed:(id)sender;
 - (IBAction)buttonResizePressed:(id)sender;
 - (IBAction)panGestureHappened:(id)sender;

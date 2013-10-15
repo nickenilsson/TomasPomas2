@@ -8,13 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		C30BDE88180BD5E300D5C5D3 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C30BDE87180BD5E300D5C5D3 /* AsyncImageView.m */; };
+		C30BDE93180BD72300D5C5D3 /* banner-1-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */; };
+		C30BDE94180BD72300D5C5D3 /* banner-2-movies.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */; };
+		C30BDE95180BD72300D5C5D3 /* banner-3-web.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */; };
+		C30BDE96180BD72300D5C5D3 /* cover-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8F180BD72300D5C5D3 /* cover-1.png */; };
+		C30BDE97180BD72300D5C5D3 /* cover-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE90180BD72300D5C5D3 /* cover-2.png */; };
+		C30BDE98180BD72300D5C5D3 /* tv-mini-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE91180BD72300D5C5D3 /* tv-mini-2.png */; };
+		C30BDE99180BD72300D5C5D3 /* tv-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE92180BD72300D5C5D3 /* tv-mini.png */; };
+		C30BDE9C180BD81000D5C5D3 /* MovieDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */; };
 		C30EF14717F9B3FE003C1468 /* SnappingLayoutGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = C30EF14617F9B3FE003C1468 /* SnappingLayoutGrid.m */; };
 		C34B8AAA17FC54B000014C1E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34B8AA917FC54B000014C1E /* ContentViewController.m */; };
+		C34BA707180BE7A300D26F96 /* PopOverController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34BA705180BE7A300D26F96 /* PopOverController.m */; };
+		C34BA708180BE7A300D26F96 /* PopOverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34BA706180BE7A300D26F96 /* PopOverController.xib */; };
 		C3B8A2261802E39100E19861 /* FilmPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */; };
 		C3B8A2271802E39100E19861 /* FilmPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */; };
 		C3BEDDD517FAB49D00E807D4 /* ContentDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */; };
 		C3BEE33E18069181007FB34F /* DropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BEE33D18069181007FB34F /* DropDownMenu.m */; };
 		C3C4CED317FC008D004FD63C /* ViewControllerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4CED217FC008D004FD63C /* ViewControllerHandler.m */; };
+		C3C6DBCA180D25880045E8F6 /* PopOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C6DBC9180D25870045E8F6 /* PopOverView.m */; };
+		C3C6DBCD180D37B80045E8F6 /* VionLabs.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3C6DBCC180D37B80045E8F6 /* VionLabs.ttf */; };
+		C3C6DBCF180D46C40045E8F6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C6DBCE180D46C40045E8F6 /* background.png */; };
 		C3C74C8A1808387500D9E144 /* OverviewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C74C881808387400D9E144 /* OverviewController2.m */; };
 		C3C74C8B1808387500D9E144 /* OverviewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C74C891808387500D9E144 /* OverviewController2.xib */; };
 		C3C74C8F180845C300D9E144 /* SideScrollLayoutSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C74C8E180845C300D9E144 /* SideScrollLayoutSmall.m */; };
@@ -23,6 +36,13 @@
 		C3C8492017FD55D3005E328A /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C8491F17FD55D3005E328A /* Actor.m */; };
 		C3C8492B17FD9A0F005E328A /* SmartCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C8492917FD9A0F005E328A /* SmartCollectionViewController.m */; };
 		C3C8492C17FD9A0F005E328A /* SmartCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C8492A17FD9A0F005E328A /* SmartCollectionViewController.xib */; };
+		C3DF6496180D70DC00C10F46 /* banner-3-movies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF6493180D70DC00C10F46 /* banner-3-movies.jpg */; };
+		C3DF6497180D70DC00C10F46 /* banner-4-movies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF6494180D70DC00C10F46 /* banner-4-movies.jpg */; };
+		C3DF6498180D70DC00C10F46 /* banner-5-movies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF6495180D70DC00C10F46 /* banner-5-movies.jpg */; };
+		C3DF649E180D70F900C10F46 /* cover-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF6499180D70F900C10F46 /* cover-3.jpg */; };
+		C3DF64A0180D70F900C10F46 /* cover-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF649B180D70F900C10F46 /* cover-5.jpg */; };
+		C3DF64A1180D70F900C10F46 /* cover-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF649C180D70F900C10F46 /* cover-6.jpg */; };
+		C3DF64A2180D70F900C10F46 /* cover-7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF649D180D70F900C10F46 /* cover-7.jpg */; };
 		C3E686A81802B74400395C34 /* ListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E686A71802B74400395C34 /* ListFlowLayout.m */; };
 		C3E686AB1802B76200395C34 /* GridFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E686AA1802B76200395C34 /* GridFlowLayout.m */; };
 		C3E686B21802BA2300395C34 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E686B11802BA2300395C34 /* ListCell.xib */; };
@@ -31,8 +51,8 @@
 		C3F34F491802BBE600CD4687 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F34F481802BBE600CD4687 /* GridCell.m */; };
 		C3F4458E17F95DE400BCF352 /* ContentOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F4458C17F95DE400BCF352 /* ContentOverviewViewController.m */; };
 		C3F4458F17F95DE400BCF352 /* ContentOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F4458D17F95DE400BCF352 /* ContentOverviewViewController.xib */; };
-		C3F4459217F9678900BCF352 /* BigBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F4459117F9678900BCF352 /* BigBannerCell.m */; };
-		C3F4459417F967AD00BCF352 /* BigBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F4459317F967AD00BCF352 /* BigBannerCell.xib */; };
+		C3F4459217F9678900BCF352 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F4459117F9678900BCF352 /* ImageCell.m */; };
+		C3F4459417F967AD00BCF352 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F4459317F967AD00BCF352 /* ImageCell.xib */; };
 		C3F4459717F96A6000BCF352 /* SnappingLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F4459617F96A6000BCF352 /* SnappingLayout.m */; };
 		C3F74A9817F5B86D009DD81F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F74A9717F5B86D009DD81F /* UIKit.framework */; };
 		C3F74A9A17F5B86D009DD81F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F74A9917F5B86D009DD81F /* Foundation.framework */; };
@@ -77,10 +97,23 @@
 /* Begin PBXFileReference section */
 		C30BDE86180BD5E300D5C5D3 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageView.h; path = "../../../../../Downloads/AsyncImageView-master/AsyncImageView/AsyncImageView.h"; sourceTree = "<group>"; };
 		C30BDE87180BD5E300D5C5D3 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = "../../../../../Downloads/AsyncImageView-master/AsyncImageView/AsyncImageView.m"; sourceTree = "<group>"; };
+		C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-1-tv.png"; sourceTree = "<group>"; };
+		C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-2-movies.png"; sourceTree = "<group>"; };
+		C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-3-web.png"; sourceTree = "<group>"; };
+		C30BDE8F180BD72300D5C5D3 /* cover-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-1.png"; sourceTree = "<group>"; };
+		C30BDE90180BD72300D5C5D3 /* cover-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-2.png"; sourceTree = "<group>"; };
+		C30BDE91180BD72300D5C5D3 /* tv-mini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tv-mini-2.png"; sourceTree = "<group>"; };
+		C30BDE92180BD72300D5C5D3 /* tv-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tv-mini.png"; sourceTree = "<group>"; };
+		C30BDE9A180BD81000D5C5D3 /* MovieDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDAO.h; sourceTree = "<group>"; };
+		C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDAO.m; sourceTree = "<group>"; };
 		C30EF14517F9B3FE003C1468 /* SnappingLayoutGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnappingLayoutGrid.h; sourceTree = "<group>"; };
 		C30EF14617F9B3FE003C1468 /* SnappingLayoutGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnappingLayoutGrid.m; sourceTree = "<group>"; };
+		C348A541180C232200C49540 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
 		C34B8AA817FC54B000014C1E /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		C34B8AA917FC54B000014C1E /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		C34BA704180BE7A300D26F96 /* PopOverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverController.h; sourceTree = "<group>"; };
+		C34BA705180BE7A300D26F96 /* PopOverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverController.m; sourceTree = "<group>"; };
+		C34BA706180BE7A300D26F96 /* PopOverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopOverController.xib; sourceTree = "<group>"; };
 		C3B8A2231802E39000E19861 /* FilmPopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmPopOverViewController.h; sourceTree = "<group>"; };
 		C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmPopOverViewController.m; sourceTree = "<group>"; };
 		C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmPopOverViewController.xib; sourceTree = "<group>"; };
@@ -90,6 +123,10 @@
 		C3BEE33D18069181007FB34F /* DropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropDownMenu.m; path = ../../../DropDownNiklas/DropDownNiklas/DropDownMenu.m; sourceTree = "<group>"; };
 		C3C4CED117FC008D004FD63C /* ViewControllerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerHandler.h; sourceTree = "<group>"; };
 		C3C4CED217FC008D004FD63C /* ViewControllerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerHandler.m; sourceTree = "<group>"; };
+		C3C6DBC8180D25870045E8F6 /* PopOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverView.h; sourceTree = "<group>"; };
+		C3C6DBC9180D25870045E8F6 /* PopOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverView.m; sourceTree = "<group>"; };
+		C3C6DBCC180D37B80045E8F6 /* VionLabs.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VionLabs.ttf; sourceTree = "<group>"; };
+		C3C6DBCE180D46C40045E8F6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		C3C74C871808387300D9E144 /* OverviewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewController2.h; sourceTree = "<group>"; };
 		C3C74C881808387400D9E144 /* OverviewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewController2.m; sourceTree = "<group>"; };
 		C3C74C891808387500D9E144 /* OverviewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewController2.xib; sourceTree = "<group>"; };
@@ -104,6 +141,13 @@
 		C3C8492817FD9A0F005E328A /* SmartCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartCollectionViewController.h; sourceTree = "<group>"; };
 		C3C8492917FD9A0F005E328A /* SmartCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartCollectionViewController.m; sourceTree = "<group>"; };
 		C3C8492A17FD9A0F005E328A /* SmartCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartCollectionViewController.xib; sourceTree = "<group>"; };
+		C3DF6493180D70DC00C10F46 /* banner-3-movies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "banner-3-movies.jpg"; sourceTree = "<group>"; };
+		C3DF6494180D70DC00C10F46 /* banner-4-movies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "banner-4-movies.jpg"; sourceTree = "<group>"; };
+		C3DF6495180D70DC00C10F46 /* banner-5-movies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "banner-5-movies.jpg"; sourceTree = "<group>"; };
+		C3DF6499180D70F900C10F46 /* cover-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-3.jpg"; sourceTree = "<group>"; };
+		C3DF649B180D70F900C10F46 /* cover-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-5.jpg"; sourceTree = "<group>"; };
+		C3DF649C180D70F900C10F46 /* cover-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-6.jpg"; sourceTree = "<group>"; };
+		C3DF649D180D70F900C10F46 /* cover-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-7.jpg"; sourceTree = "<group>"; };
 		C3E686A61802B74400395C34 /* ListFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFlowLayout.h; sourceTree = "<group>"; };
 		C3E686A71802B74400395C34 /* ListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFlowLayout.m; sourceTree = "<group>"; };
 		C3E686A91802B76200395C34 /* GridFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridFlowLayout.h; sourceTree = "<group>"; };
@@ -117,9 +161,9 @@
 		C3F4458B17F95DE400BCF352 /* ContentOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentOverviewViewController.h; sourceTree = "<group>"; };
 		C3F4458C17F95DE400BCF352 /* ContentOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentOverviewViewController.m; sourceTree = "<group>"; };
 		C3F4458D17F95DE400BCF352 /* ContentOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentOverviewViewController.xib; sourceTree = "<group>"; };
-		C3F4459017F9678900BCF352 /* BigBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigBannerCell.h; sourceTree = "<group>"; };
-		C3F4459117F9678900BCF352 /* BigBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigBannerCell.m; sourceTree = "<group>"; };
-		C3F4459317F967AD00BCF352 /* BigBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigBannerCell.xib; sourceTree = "<group>"; };
+		C3F4459017F9678900BCF352 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		C3F4459117F9678900BCF352 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		C3F4459317F967AD00BCF352 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		C3F4459517F96A6000BCF352 /* SnappingLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnappingLayout.h; sourceTree = "<group>"; };
 		C3F4459617F96A6000BCF352 /* SnappingLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnappingLayout.m; sourceTree = "<group>"; };
 		C3F74A9417F5B86D009DD81F /* AtflickVersion2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtflickVersion2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,8 +235,31 @@
 		C30BDE89180BD64600D5C5D3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C3DF6499180D70F900C10F46 /* cover-3.jpg */,
+				C3DF649B180D70F900C10F46 /* cover-5.jpg */,
+				C3DF649C180D70F900C10F46 /* cover-6.jpg */,
+				C3DF649D180D70F900C10F46 /* cover-7.jpg */,
+				C3DF6493180D70DC00C10F46 /* banner-3-movies.jpg */,
+				C3DF6494180D70DC00C10F46 /* banner-4-movies.jpg */,
+				C3DF6495180D70DC00C10F46 /* banner-5-movies.jpg */,
+				C3C6DBCE180D46C40045E8F6 /* background.png */,
+				C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */,
+				C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */,
+				C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */,
+				C30BDE8F180BD72300D5C5D3 /* cover-1.png */,
+				C30BDE90180BD72300D5C5D3 /* cover-2.png */,
+				C30BDE91180BD72300D5C5D3 /* tv-mini-2.png */,
+				C30BDE92180BD72300D5C5D3 /* tv-mini.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		C348A540180C22F200C49540 /* Config files */ = {
+			isa = PBXGroup;
+			children = (
+				C348A541180C232200C49540 /* Colors.h */,
+			);
+			name = "Config files";
 			sourceTree = "<group>";
 		};
 		C34B8AA717FC548600014C1E /* ContentViewControllers */ = {
@@ -206,6 +273,27 @@
 			name = ContentViewControllers;
 			sourceTree = "<group>";
 		};
+		C34BA703180BE75800D26F96 /* PopOverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C34BA704180BE7A300D26F96 /* PopOverController.h */,
+				C34BA705180BE7A300D26F96 /* PopOverController.m */,
+				C34BA706180BE7A300D26F96 /* PopOverController.xib */,
+				C34BA709180C048000D26F96 /* popOverViews */,
+			);
+			name = PopOverViewController;
+			sourceTree = "<group>";
+		};
+		C34BA709180C048000D26F96 /* popOverViews */ = {
+			isa = PBXGroup;
+			children = (
+				C3C6DBC8180D25870045E8F6 /* PopOverView.h */,
+				C3C6DBC9180D25870045E8F6 /* PopOverView.m */,
+				C3C6DBC7180D24640045E8F6 /* FilmPopOver */,
+			);
+			name = popOverViews;
+			sourceTree = "<group>";
+		};
 		C3BEDDD617FAB4CC00E807D4 /* ViewTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,13 +301,34 @@
 				C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */,
 				C3C8492717FD99DB005E328A /* SmartCollectionViewController */,
 				C3F4458A17F95D9500BCF352 /* Overview */,
+				C3C74C8C1808457000D9E144 /* OverViewController */,
 			);
 			name = ViewTypes;
+			sourceTree = "<group>";
+		};
+		C3C6DBC7180D24640045E8F6 /* FilmPopOver */ = {
+			isa = PBXGroup;
+			children = (
+				C3B8A2231802E39000E19861 /* FilmPopOverViewController.h */,
+				C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */,
+				C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */,
+			);
+			name = FilmPopOver;
+			sourceTree = "<group>";
+		};
+		C3C6DBCB180D37340045E8F6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C3C6DBCC180D37B80045E8F6 /* VionLabs.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		C3C74C801808027D00D9E144 /* DataAccessObject */ = {
 			isa = PBXGroup;
 			children = (
+				C30BDE9A180BD81000D5C5D3 /* MovieDAO.h */,
+				C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */,
 			);
 			name = DataAccessObject;
 			sourceTree = "<group>";
@@ -275,9 +384,9 @@
 				C3F4458B17F95DE400BCF352 /* ContentOverviewViewController.h */,
 				C3F4458C17F95DE400BCF352 /* ContentOverviewViewController.m */,
 				C3F4458D17F95DE400BCF352 /* ContentOverviewViewController.xib */,
-				C3F4459017F9678900BCF352 /* BigBannerCell.h */,
-				C3F4459117F9678900BCF352 /* BigBannerCell.m */,
-				C3F4459317F967AD00BCF352 /* BigBannerCell.xib */,
+				C3F4459017F9678900BCF352 /* ImageCell.h */,
+				C3F4459117F9678900BCF352 /* ImageCell.m */,
+				C3F4459317F967AD00BCF352 /* ImageCell.xib */,
 			);
 			name = Overview;
 			sourceTree = "<group>";
@@ -316,6 +425,8 @@
 		C3F74A9F17F5B86D009DD81F /* AtflickVersion2 */ = {
 			isa = PBXGroup;
 			children = (
+				C3C6DBCB180D37340045E8F6 /* Fonts */,
+				C348A540180C22F200C49540 /* Config files */,
 				C30BDE89180BD64600D5C5D3 /* Images */,
 				C3C74C801808027D00D9E144 /* DataAccessObject */,
 				C3C8491A17FD5568005E328A /* Model classes */,
@@ -326,12 +437,9 @@
 				C3F74AD717F5BAD9009DD81F /* RootViewController */,
 				C34B8AA717FC548600014C1E /* ContentViewControllers */,
 				C3BEDDD617FAB4CC00E807D4 /* ViewTypes */,
+				C34BA703180BE75800D26F96 /* PopOverViewController */,
 				C3F74AEF17F5C28C009DD81F /* Other Classes */,
 				C3F74AA017F5B86D009DD81F /* Supporting Files */,
-				C3B8A2231802E39000E19861 /* FilmPopOverViewController.h */,
-				C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */,
-				C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */,
-				C3C74C8C1808457000D9E144 /* OverViewController */,
 			);
 			path = AtflickVersion2;
 			sourceTree = "<group>";
@@ -512,12 +620,29 @@
 				C3F74AEC17F5C03A009DD81F /* MainMenuTableViewCell.xib in Resources */,
 				C3F74AEE17F5C03A009DD81F /* MainMenuViewController.xib in Resources */,
 				C3F4458F17F95DE400BCF352 /* ContentOverviewViewController.xib in Resources */,
-				C3F4459417F967AD00BCF352 /* BigBannerCell.xib in Resources */,
+				C3F4459417F967AD00BCF352 /* ImageCell.xib in Resources */,
 				C3C8492C17FD9A0F005E328A /* SmartCollectionViewController.xib in Resources */,
 				C3E686B21802BA2300395C34 /* ListCell.xib in Resources */,
 				C3F34F461802BBB600CD4687 /* GridCell.xib in Resources */,
 				C3B8A2271802E39100E19861 /* FilmPopOverViewController.xib in Resources */,
 				C3C74C8B1808387500D9E144 /* OverviewController2.xib in Resources */,
+				C30BDE93180BD72300D5C5D3 /* banner-1-tv.png in Resources */,
+				C30BDE94180BD72300D5C5D3 /* banner-2-movies.png in Resources */,
+				C30BDE95180BD72300D5C5D3 /* banner-3-web.png in Resources */,
+				C30BDE96180BD72300D5C5D3 /* cover-1.png in Resources */,
+				C30BDE97180BD72300D5C5D3 /* cover-2.png in Resources */,
+				C30BDE98180BD72300D5C5D3 /* tv-mini-2.png in Resources */,
+				C30BDE99180BD72300D5C5D3 /* tv-mini.png in Resources */,
+				C34BA708180BE7A300D26F96 /* PopOverController.xib in Resources */,
+				C3C6DBCD180D37B80045E8F6 /* VionLabs.ttf in Resources */,
+				C3C6DBCF180D46C40045E8F6 /* background.png in Resources */,
+				C3DF6496180D70DC00C10F46 /* banner-3-movies.jpg in Resources */,
+				C3DF6497180D70DC00C10F46 /* banner-4-movies.jpg in Resources */,
+				C3DF6498180D70DC00C10F46 /* banner-5-movies.jpg in Resources */,
+				C3DF649E180D70F900C10F46 /* cover-3.jpg in Resources */,
+				C3DF64A0180D70F900C10F46 /* cover-5.jpg in Resources */,
+				C3DF64A1180D70F900C10F46 /* cover-6.jpg in Resources */,
+				C3DF64A2180D70F900C10F46 /* cover-7.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +687,7 @@
 				C3F74AED17F5C03A009DD81F /* MainMenuViewController.m in Sources */,
 				C3F74AF217F5C2A6009DD81F /* ArrayDataSource.m in Sources */,
 				C3F4458E17F95DE400BCF352 /* ContentOverviewViewController.m in Sources */,
-				C3F4459217F9678900BCF352 /* BigBannerCell.m in Sources */,
+				C3F4459217F9678900BCF352 /* ImageCell.m in Sources */,
 				C3F4459717F96A6000BCF352 /* SnappingLayout.m in Sources */,
 				C30EF14717F9B3FE003C1468 /* SnappingLayoutGrid.m in Sources */,
 				C3BEDDD517FAB49D00E807D4 /* ContentDisplayView.m in Sources */,
@@ -581,6 +706,9 @@
 				C3C74C8F180845C300D9E144 /* SideScrollLayoutSmall.m in Sources */,
 				C3C74C9218084A6700D9E144 /* SideScrollBig.m in Sources */,
 				C30BDE88180BD5E300D5C5D3 /* AsyncImageView.m in Sources */,
+				C30BDE9C180BD81000D5C5D3 /* MovieDAO.m in Sources */,
+				C34BA707180BE7A300D26F96 /* PopOverController.m in Sources */,
+				C3C6DBCA180D25880045E8F6 /* PopOverView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
