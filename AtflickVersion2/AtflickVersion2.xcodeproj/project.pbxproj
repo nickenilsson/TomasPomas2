@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C30BDE88180BD5E300D5C5D3 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C30BDE87180BD5E300D5C5D3 /* AsyncImageView.m */; };
 		C30BDE93180BD72300D5C5D3 /* banner-1-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */; };
 		C30BDE94180BD72300D5C5D3 /* banner-2-movies.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */; };
 		C30BDE95180BD72300D5C5D3 /* banner-3-web.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */; };
@@ -23,7 +22,6 @@
 		C3B8A2261802E39100E19861 /* FilmPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */; };
 		C3B8A2271802E39100E19861 /* FilmPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */; };
 		C3BEDDD517FAB49D00E807D4 /* ContentDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */; };
-		C3BEE33E18069181007FB34F /* DropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BEE33D18069181007FB34F /* DropDownMenu.m */; };
 		C3C4CED317FC008D004FD63C /* ViewControllerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4CED217FC008D004FD63C /* ViewControllerHandler.m */; };
 		C3C6DBCA180D25880045E8F6 /* PopOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C6DBC9180D25870045E8F6 /* PopOverView.m */; };
 		C3C6DBCD180D37B80045E8F6 /* VionLabs.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3C6DBCC180D37B80045E8F6 /* VionLabs.ttf */; };
@@ -43,6 +41,7 @@
 		C3DF64A0180D70F900C10F46 /* cover-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF649B180D70F900C10F46 /* cover-5.jpg */; };
 		C3DF64A1180D70F900C10F46 /* cover-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF649C180D70F900C10F46 /* cover-6.jpg */; };
 		C3DF64A2180D70F900C10F46 /* cover-7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3DF649D180D70F900C10F46 /* cover-7.jpg */; };
+		C3DF64A5180D8C6C00C10F46 /* DropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DF64A4180D8C6C00C10F46 /* DropDownMenu.m */; };
 		C3E686A81802B74400395C34 /* ListFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E686A71802B74400395C34 /* ListFlowLayout.m */; };
 		C3E686AB1802B76200395C34 /* GridFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E686AA1802B76200395C34 /* GridFlowLayout.m */; };
 		C3E686B21802BA2300395C34 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E686B11802BA2300395C34 /* ListCell.xib */; };
@@ -95,8 +94,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C30BDE86180BD5E300D5C5D3 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageView.h; path = "../../../../../Downloads/AsyncImageView-master/AsyncImageView/AsyncImageView.h"; sourceTree = "<group>"; };
-		C30BDE87180BD5E300D5C5D3 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = "../../../../../Downloads/AsyncImageView-master/AsyncImageView/AsyncImageView.m"; sourceTree = "<group>"; };
 		C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-1-tv.png"; sourceTree = "<group>"; };
 		C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-2-movies.png"; sourceTree = "<group>"; };
 		C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-3-web.png"; sourceTree = "<group>"; };
@@ -119,8 +116,6 @@
 		C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmPopOverViewController.xib; sourceTree = "<group>"; };
 		C3BEDDD317FAB49D00E807D4 /* ContentDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDisplayView.h; sourceTree = "<group>"; };
 		C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDisplayView.m; sourceTree = "<group>"; };
-		C3BEE33C18069181007FB34F /* DropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropDownMenu.h; path = ../../../DropDownNiklas/DropDownNiklas/DropDownMenu.h; sourceTree = "<group>"; };
-		C3BEE33D18069181007FB34F /* DropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropDownMenu.m; path = ../../../DropDownNiklas/DropDownNiklas/DropDownMenu.m; sourceTree = "<group>"; };
 		C3C4CED117FC008D004FD63C /* ViewControllerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerHandler.h; sourceTree = "<group>"; };
 		C3C4CED217FC008D004FD63C /* ViewControllerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerHandler.m; sourceTree = "<group>"; };
 		C3C6DBC8180D25870045E8F6 /* PopOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverView.h; sourceTree = "<group>"; };
@@ -148,6 +143,8 @@
 		C3DF649B180D70F900C10F46 /* cover-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-5.jpg"; sourceTree = "<group>"; };
 		C3DF649C180D70F900C10F46 /* cover-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-6.jpg"; sourceTree = "<group>"; };
 		C3DF649D180D70F900C10F46 /* cover-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-7.jpg"; sourceTree = "<group>"; };
+		C3DF64A3180D8C6C00C10F46 /* DropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenu.h; sourceTree = "<group>"; };
+		C3DF64A4180D8C6C00C10F46 /* DropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenu.m; sourceTree = "<group>"; };
 		C3E686A61802B74400395C34 /* ListFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFlowLayout.h; sourceTree = "<group>"; };
 		C3E686A71802B74400395C34 /* ListFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFlowLayout.m; sourceTree = "<group>"; };
 		C3E686A91802B76200395C34 /* GridFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridFlowLayout.h; sourceTree = "<group>"; };
@@ -523,12 +520,10 @@
 		C3F74AEF17F5C28C009DD81F /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C30BDE86180BD5E300D5C5D3 /* AsyncImageView.h */,
-				C30BDE87180BD5E300D5C5D3 /* AsyncImageView.m */,
+				C3DF64A3180D8C6C00C10F46 /* DropDownMenu.h */,
+				C3DF64A4180D8C6C00C10F46 /* DropDownMenu.m */,
 				C3F4459517F96A6000BCF352 /* SnappingLayout.h */,
 				C3F4459617F96A6000BCF352 /* SnappingLayout.m */,
-				C3BEE33C18069181007FB34F /* DropDownMenu.h */,
-				C3BEE33D18069181007FB34F /* DropDownMenu.m */,
 				C3F74AF017F5C2A5009DD81F /* ArrayDataSource.h */,
 				C3F74AF117F5C2A5009DD81F /* ArrayDataSource.m */,
 				C30EF14517F9B3FE003C1468 /* SnappingLayoutGrid.h */,
@@ -701,14 +696,13 @@
 				C3E686B51802BA3C00395C34 /* ListCell.m in Sources */,
 				C3F34F491802BBE600CD4687 /* GridCell.m in Sources */,
 				C3B8A2261802E39100E19861 /* FilmPopOverViewController.m in Sources */,
-				C3BEE33E18069181007FB34F /* DropDownMenu.m in Sources */,
 				C3C74C8A1808387500D9E144 /* OverviewController2.m in Sources */,
 				C3C74C8F180845C300D9E144 /* SideScrollLayoutSmall.m in Sources */,
 				C3C74C9218084A6700D9E144 /* SideScrollBig.m in Sources */,
-				C30BDE88180BD5E300D5C5D3 /* AsyncImageView.m in Sources */,
 				C30BDE9C180BD81000D5C5D3 /* MovieDAO.m in Sources */,
 				C34BA707180BE7A300D26F96 /* PopOverController.m in Sources */,
 				C3C6DBCA180D25880045E8F6 /* PopOverView.m in Sources */,
+				C3DF64A5180D8C6C00C10F46 /* DropDownMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
