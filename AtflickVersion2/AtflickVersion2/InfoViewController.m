@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Niklas Nilsson. All rights reserved.
 //
 
-#import "PopOverView.h"
+#import "InfoViewController.h"
 
-@interface PopOverView ()
+@interface InfoViewController ()
 
 @end
 
-@implementation PopOverView
+@implementation InfoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

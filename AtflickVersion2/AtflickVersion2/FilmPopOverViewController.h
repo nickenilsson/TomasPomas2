@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PopOverView.h"
+#import "InfoViewController.h"
 
 @class Movie;
 
-@interface FilmPopOverViewController : PopOverView <UICollectionViewDelegateFlowLayout>
+@interface FilmPopOverViewController : InfoViewController <UICollectionViewDelegateFlowLayout>
 
 -(id) initWithMovieObject:(Movie *)movie;
 

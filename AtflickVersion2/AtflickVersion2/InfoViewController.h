@@ -14,7 +14,7 @@
 
 @end
 
-@interface PopOverView : UIViewController
+@interface InfoViewController : UIViewController
 
 @property (weak, nonatomic) id <PopOverViewDelegate> delegate;
 

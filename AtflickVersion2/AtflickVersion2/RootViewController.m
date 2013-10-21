@@ -13,7 +13,9 @@
 #import "ViewControllerHandler.h"
 #import "PopOverController.h"
 #import "Colors.h"
-#import "PopOverView.h"
+#import "InfoViewController.h"
+#import "InfoViewAnimationController.h"
+
 
 #define ANIMATION_DURATION 0.2
 #define SHADOW_FADE_IN_TIME 0.1
@@ -25,7 +27,7 @@
 @property (strong, nonatomic) MainMenuViewController *mainmenuViewController;
 @property (strong, nonatomic) ContentViewController *currentContentViewController;
 @property (strong, nonatomic) ViewControllerHandler *viewControllerHandler;
-@property (strong, nonatomic) PopOverController *popOverController;
+@property (strong, nonatomic) InfoViewAnimationController *popOverController;
 @property (strong, nonatomic) UIView *shadowView;
 @property (nonatomic) CGPoint centerOfScreen;
 @property (nonatomic) BOOL menuIsActive;
@@ -64,20 +66,8 @@
     self.viewControllerHandler = [[ViewControllerHandler alloc]init];
     
     self.centerOfScreen = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-    [self setColors];
     [self menuItemSelectedWithIndex:1];
 
-}
-
--(void) setColors
-{
-    self.topBar.backgroundColor = COLOR_ROOT_VIEW_TOP_BAR;
-    self.topBar.layer.shadowColor = COLOR_SHADOW_TOP_BAR;
-    self.topBar.layer.shadowOffset = CGSizeMake(0, 1);
-    self.topBar.layer.shadowOpacity = .3;
-    self.topBar.layer.shadowRadius = 1;
-    self.topBar.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.topBar.bounds] CGPath];
-    self.topBar.layer.shouldRasterize = YES;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -116,7 +106,6 @@
     CGPoint translation = [sender translationInView:self.view];
     
     [self addMainMenu];
-    [self dropShadowOnPlaceholder:YES];
     
     CGFloat newConstantMainPlaceholder = self.placeholderLeadingConstraint.constant + translation.x;
     CGFloat translationXforMenu = translation.x / 8;
@@ -152,7 +141,6 @@
 -(void) showMenuWithAnimation
 {
     [self addMainMenu];
-    [self dropShadowOnPlaceholder:YES];
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeholderLeadingConstraint.constant = self.maxPanWidth;
         self.menuLeadingConstraint.constant = 0;
@@ -166,7 +154,6 @@
 -(void) hideMenuWithAnimation
 {
     [self addMainMenu];
-    //[self dropShadowOnPlaceholder:NO];
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeholderLeadingConstraint.constant = 0;
         self.menuLeadingConstraint.constant = self.maxPanWidthMenu;
@@ -203,22 +190,6 @@
     [self.view layoutIfNeeded];
     
 }
--(void) dropShadowOnPlaceholder:(BOOL) value
-{
-    if(value == YES){
-        self.mainPlaceholder.layer.shadowColor = [[UIColor blackColor]CGColor];
-        self.mainPlaceholder.layer.shadowOffset = CGSizeMake(-2, 0);
-        self.mainPlaceholder.layer.shadowOpacity = 1;
-        self.mainPlaceholder.layer.shadowRadius = 2;
-        self.mainPlaceholder.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.mainPlaceholder.bounds] CGPath];
-        self.mainPlaceholder.layer.shouldRasterize = YES;
-    }else{
-        if (self.mainPlaceholder.layer.sublayers != nil) {
-            self.mainPlaceholder.layer.sublayers = nil;
-        }
-    }
-}
-
 -(void) removeMainMenu
 {
     if (self.mainmenuViewController != nil) {
@@ -267,16 +238,16 @@
     [self.view layoutIfNeeded];
 }
 // ContentViewControllerDelegate - called from current content view controller
--(void) presentPopOverViewController:(PopOverView *) viewController
+-(void) presentPopOverViewController:(InfoViewController *) viewController
 {
     [self addShadowView];
     [self addPopOverController];
     [self setConstraintsForPopOverController];
-    [self.popOverController addNewPopOver:viewController];
+    [self.popOverController presentNewInfoView:viewController];
 }
 -(void) addPopOverController
 {
-    self.popOverController = [[PopOverController alloc]init];
+    self.popOverController = [[InfoViewAnimationController alloc]init];
     [self.currentContentViewController addChildViewController:self.popOverController];
     [self.popOverController didMoveToParentViewController:self.currentContentViewController];
     self.popOverController.delegate = (id) self;
@@ -303,7 +274,7 @@
         self.shadowView.alpha = 0.7;
     } completion:^(BOOL finished){} ];
 }
--(void) removePopOverController
+-(void) removeInfoViewAnimationController
 {
     [UIView animateWithDuration:DURATION_POP_OVER_FADE_OUT delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.popOverController.view.alpha = 0;

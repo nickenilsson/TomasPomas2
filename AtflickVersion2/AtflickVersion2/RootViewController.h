@@ -10,8 +10,9 @@
 #import "MainMenuViewController.h"
 #import "ContentViewController.h"
 #import "PopOverController.h"
+#import "InfoViewAnimationController.h"
 
-@interface RootViewController : UIViewController <MainMenuDelegate, ContentViewControllerDelegate, PopOverControllerDelegate>
+@interface RootViewController : UIViewController <MainMenuDelegate, ContentViewControllerDelegate, InfoViewAnimationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIView *mainPlaceholder;
 @property (weak, nonatomic) IBOutlet UIView *placeholderForMenu;

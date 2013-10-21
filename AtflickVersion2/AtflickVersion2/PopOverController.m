@@ -80,7 +80,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) addNewPopOver:(PopOverView *) popOver
+-(void) addNewPopOver:(InfoViewController *) popOver
 {
     [self addChildViewController:popOver];
     [self.view addSubview:popOver.view];

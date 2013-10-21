@@ -27,7 +27,7 @@
 {
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    self.minimumInteritemSpacing = 10;
+    self.minimumInteritemSpacing = 20;
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     CGRect collectionViewBounds = self.collectionView.bounds;
     

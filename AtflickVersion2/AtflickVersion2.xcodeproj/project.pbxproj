@@ -16,6 +16,8 @@
 		C30BDE99180BD72300D5C5D3 /* tv-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE92180BD72300D5C5D3 /* tv-mini.png */; };
 		C30BDE9C180BD81000D5C5D3 /* MovieDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */; };
 		C30EF14717F9B3FE003C1468 /* SnappingLayoutGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = C30EF14617F9B3FE003C1468 /* SnappingLayoutGrid.m */; };
+		C31F954C180E773D00A26A99 /* InfoViewAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */; };
+		C31F954D180E773D00A26A99 /* InfoViewAnimationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */; };
 		C34B8AAA17FC54B000014C1E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34B8AA917FC54B000014C1E /* ContentViewController.m */; };
 		C34BA707180BE7A300D26F96 /* PopOverController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34BA705180BE7A300D26F96 /* PopOverController.m */; };
 		C34BA708180BE7A300D26F96 /* PopOverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34BA706180BE7A300D26F96 /* PopOverController.xib */; };
@@ -23,7 +25,7 @@
 		C3B8A2271802E39100E19861 /* FilmPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */; };
 		C3BEDDD517FAB49D00E807D4 /* ContentDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */; };
 		C3C4CED317FC008D004FD63C /* ViewControllerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4CED217FC008D004FD63C /* ViewControllerHandler.m */; };
-		C3C6DBCA180D25880045E8F6 /* PopOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C6DBC9180D25870045E8F6 /* PopOverView.m */; };
+		C3C6DBCA180D25880045E8F6 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C6DBC9180D25870045E8F6 /* InfoViewController.m */; };
 		C3C6DBCD180D37B80045E8F6 /* VionLabs.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3C6DBCC180D37B80045E8F6 /* VionLabs.ttf */; };
 		C3C6DBCF180D46C40045E8F6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C6DBCE180D46C40045E8F6 /* background.png */; };
 		C3C74C8A1808387500D9E144 /* OverviewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C74C881808387400D9E144 /* OverviewController2.m */; };
@@ -105,6 +107,9 @@
 		C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDAO.m; sourceTree = "<group>"; };
 		C30EF14517F9B3FE003C1468 /* SnappingLayoutGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnappingLayoutGrid.h; sourceTree = "<group>"; };
 		C30EF14617F9B3FE003C1468 /* SnappingLayoutGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnappingLayoutGrid.m; sourceTree = "<group>"; };
+		C31F9549180E773D00A26A99 /* InfoViewAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewAnimationController.h; sourceTree = "<group>"; };
+		C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewAnimationController.m; sourceTree = "<group>"; };
+		C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewAnimationController.xib; sourceTree = "<group>"; };
 		C348A541180C232200C49540 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
 		C34B8AA817FC54B000014C1E /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		C34B8AA917FC54B000014C1E /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
@@ -118,8 +123,8 @@
 		C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDisplayView.m; sourceTree = "<group>"; };
 		C3C4CED117FC008D004FD63C /* ViewControllerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerHandler.h; sourceTree = "<group>"; };
 		C3C4CED217FC008D004FD63C /* ViewControllerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerHandler.m; sourceTree = "<group>"; };
-		C3C6DBC8180D25870045E8F6 /* PopOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverView.h; sourceTree = "<group>"; };
-		C3C6DBC9180D25870045E8F6 /* PopOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverView.m; sourceTree = "<group>"; };
+		C3C6DBC8180D25870045E8F6 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		C3C6DBC9180D25870045E8F6 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		C3C6DBCC180D37B80045E8F6 /* VionLabs.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VionLabs.ttf; sourceTree = "<group>"; };
 		C3C6DBCE180D46C40045E8F6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		C3C74C871808387300D9E144 /* OverviewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewController2.h; sourceTree = "<group>"; };
@@ -277,6 +282,9 @@
 				C34BA705180BE7A300D26F96 /* PopOverController.m */,
 				C34BA706180BE7A300D26F96 /* PopOverController.xib */,
 				C34BA709180C048000D26F96 /* popOverViews */,
+				C31F9549180E773D00A26A99 /* InfoViewAnimationController.h */,
+				C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */,
+				C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */,
 			);
 			name = PopOverViewController;
 			sourceTree = "<group>";
@@ -284,8 +292,8 @@
 		C34BA709180C048000D26F96 /* popOverViews */ = {
 			isa = PBXGroup;
 			children = (
-				C3C6DBC8180D25870045E8F6 /* PopOverView.h */,
-				C3C6DBC9180D25870045E8F6 /* PopOverView.m */,
+				C3C6DBC8180D25870045E8F6 /* InfoViewController.h */,
+				C3C6DBC9180D25870045E8F6 /* InfoViewController.m */,
 				C3C6DBC7180D24640045E8F6 /* FilmPopOver */,
 			);
 			name = popOverViews;
@@ -638,6 +646,7 @@
 				C3DF64A0180D70F900C10F46 /* cover-5.jpg in Resources */,
 				C3DF64A1180D70F900C10F46 /* cover-6.jpg in Resources */,
 				C3DF64A2180D70F900C10F46 /* cover-7.jpg in Resources */,
+				C31F954D180E773D00A26A99 /* InfoViewAnimationController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,8 +710,9 @@
 				C3C74C9218084A6700D9E144 /* SideScrollBig.m in Sources */,
 				C30BDE9C180BD81000D5C5D3 /* MovieDAO.m in Sources */,
 				C34BA707180BE7A300D26F96 /* PopOverController.m in Sources */,
-				C3C6DBCA180D25880045E8F6 /* PopOverView.m in Sources */,
+				C3C6DBCA180D25880045E8F6 /* InfoViewController.m in Sources */,
 				C3DF64A8180D8E0D00C10F46 /* DropDownMenu.m in Sources */,
+				C31F954C180E773D00A26A99 /* InfoViewAnimationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,21 +48,27 @@ static NSString * const cellIdentifier = @"cellIdentifier";
 {
     self.labelDescription.numberOfLines = 0;
     [self.labelDescription sizeToFit];
-    self.view.layer.borderColor = [[UIColor grayColor] CGColor];
-    self.view.layer.borderWidth = 1;
-    self.view.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.view.layer.shadowOffset = CGSizeMake(2, 2);
-    self.view.layer.shadowRadius = 3;
-    self.view.layer.shadowOpacity = 1;
-    self.view.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.view.bounds] CGPath];
-    self.view.layer.shouldRasterize = YES;
+        
+    [self.view layoutIfNeeded];
 
-    
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.view.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.view.layer.borderWidth = 1;
+    /*
+     self.view.layer.shadowColor = [[UIColor blackColor] CGColor];
+     self.view.layer.shadowOffset = CGSizeMake(2, 2);
+     self.view.layer.shadowRadius = 3;
+     self.view.layer.shadowOpacity = 1;
+     self.view.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.view.bounds] CGPath];
+     self.view.layer.shouldRasterize = YES;
+     */
+
+
     
     self.imageView.image = [UIImage imageNamed:self.movie.imageName];
     self.smallLabel.text = self.movie.title;
