@@ -14,6 +14,7 @@
 @interface FilmPopOverViewController : InfoViewController <UICollectionViewDelegateFlowLayout>
 
 -(id) initWithMovieObject:(Movie *)movie;
+- (IBAction)trailerButtonTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *smallLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

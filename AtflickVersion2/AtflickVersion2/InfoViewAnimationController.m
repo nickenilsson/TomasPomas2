@@ -54,6 +54,7 @@
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panHappened:)];
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(close:)];
     self.tapGestureRecognizer.delegate = (id)self;
+
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
     
     [self.view addGestureRecognizer:self.panGestureRecognizer];
@@ -215,9 +216,10 @@
     NSLayoutConstraint *constraintInfoViewLeftOfScreen = (NSLayoutConstraint *)[self objectIn:self.horizontalConstraints atIndexFromLast:1];
     
     if (self.infoViews.count > 2) {
-        self.oldInfoView = (InfoViewController *)[self objectIn:self.infoViews atIndexFromLast:2];
-        self.oldInfoViewConstraint = (NSLayoutConstraint *)[self objectIn:self.horizontalConstraints atIndexFromLast:2];
         if ([sender state] == UIGestureRecognizerStateBegan) {
+            NSLog(@"touch began");
+            self.oldInfoView = (InfoViewController *)[self objectIn:self.infoViews atIndexFromLast:2];
+            self.oldInfoViewConstraint = (NSLayoutConstraint *)[self objectIn:self.horizontalConstraints atIndexFromLast:2];
             [self addInfoView:self.oldInfoView];
             [self setSizeAndAlignVertically:self.oldInfoView];
             [self.view addConstraint:self.oldInfoViewConstraint];
@@ -284,9 +286,21 @@
         self.oldInfoViewConstraint = nil;
     }];
 }
--(void) presentPopOver:(InfoViewController *) popOver
+-(void) swipeHappened:(UIGestureRecognizer *)sender
 {
-    [self presentNewInfoView:popOver];
+    NSLog(@"swipeHappened");
+    if (self.infoViews.count > 1 && [sender state] == UISwipeGestureRecognizerDirectionRight){
+        [self goBackToPreviousInfoView];
+    }
+
+}
+-(void) newInfoViewRequestedFromInfoView:(UIViewController *)infoView
+{
+    [self presentNewInfoView:(InfoViewController *)infoView];
+}
+-(void) mediaObjectSelectedInInfoView:(NSString *)media
+{
+    [self.delegate mediaSelectedForWatching:media];
 }
 -(void) close:(UITapGestureRecognizer *)sender
 {
@@ -306,8 +320,8 @@
         }
     }
     return YES;
-
 }
+
 -(id) objectIn:(NSArray *)array atIndexFromLast:(int) index
 {
     NSInteger i = array.count - (index+1);

@@ -13,6 +13,7 @@
 
 
 -(void) removeInfoViewAnimationController;
+-(void) mediaSelectedForWatching:(NSString *) media;
 
 @end
 

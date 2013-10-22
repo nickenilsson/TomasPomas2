@@ -16,6 +16,9 @@
 		C30BDE99180BD72300D5C5D3 /* tv-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE92180BD72300D5C5D3 /* tv-mini.png */; };
 		C30BDE9C180BD81000D5C5D3 /* MovieDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */; };
 		C30EF14717F9B3FE003C1468 /* SnappingLayoutGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = C30EF14617F9B3FE003C1468 /* SnappingLayoutGrid.m */; };
+		C30F8AF018166C8500C092F1 /* MediaPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30F8AEE18166C8500C092F1 /* MediaPlayerViewController.m */; };
+		C30F8AF118166C8500C092F1 /* MediaPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30F8AEF18166C8500C092F1 /* MediaPlayerViewController.xib */; };
+		C30F8AF31816794300C092F1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30F8AF21816794300C092F1 /* MediaPlayer.framework */; };
 		C31F954C180E773D00A26A99 /* InfoViewAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */; };
 		C31F954D180E773D00A26A99 /* InfoViewAnimationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */; };
 		C34B8AAA17FC54B000014C1E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34B8AA917FC54B000014C1E /* ContentViewController.m */; };
@@ -107,6 +110,10 @@
 		C30BDE9B180BD81000D5C5D3 /* MovieDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDAO.m; sourceTree = "<group>"; };
 		C30EF14517F9B3FE003C1468 /* SnappingLayoutGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnappingLayoutGrid.h; sourceTree = "<group>"; };
 		C30EF14617F9B3FE003C1468 /* SnappingLayoutGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnappingLayoutGrid.m; sourceTree = "<group>"; };
+		C30F8AED18166C8500C092F1 /* MediaPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPlayerViewController.h; sourceTree = "<group>"; };
+		C30F8AEE18166C8500C092F1 /* MediaPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaPlayerViewController.m; sourceTree = "<group>"; };
+		C30F8AEF18166C8500C092F1 /* MediaPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPlayerViewController.xib; sourceTree = "<group>"; };
+		C30F8AF21816794300C092F1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C31F9549180E773D00A26A99 /* InfoViewAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewAnimationController.h; sourceTree = "<group>"; };
 		C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewAnimationController.m; sourceTree = "<group>"; };
 		C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewAnimationController.xib; sourceTree = "<group>"; };
@@ -213,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30F8AF31816794300C092F1 /* MediaPlayer.framework in Frameworks */,
 				C3F74A9817F5B86D009DD81F /* UIKit.framework in Frameworks */,
 				C3F74A9A17F5B86D009DD81F /* Foundation.framework in Frameworks */,
 				C3F74A9C17F5B86D009DD81F /* CoreGraphics.framework in Frameworks */,
@@ -254,6 +262,16 @@
 				C30BDE92180BD72300D5C5D3 /* tv-mini.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		C30F8AEC18166C5200C092F1 /* MediaPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				C30F8AED18166C8500C092F1 /* MediaPlayerViewController.h */,
+				C30F8AEE18166C8500C092F1 /* MediaPlayerViewController.m */,
+				C30F8AEF18166C8500C092F1 /* MediaPlayerViewController.xib */,
+			);
+			name = MediaPlayerController;
 			sourceTree = "<group>";
 		};
 		C348A540180C22F200C49540 /* Config files */ = {
@@ -399,6 +417,7 @@
 		C3F74A8B17F5B86D009DD81F = {
 			isa = PBXGroup;
 			children = (
+				C30F8AF21816794300C092F1 /* MediaPlayer.framework */,
 				C3F74A9F17F5B86D009DD81F /* AtflickVersion2 */,
 				C3F74AC117F5B86E009DD81F /* AtflickVersion2Tests */,
 				C3F74A9617F5B86D009DD81F /* Frameworks */,
@@ -430,6 +449,7 @@
 		C3F74A9F17F5B86D009DD81F /* AtflickVersion2 */ = {
 			isa = PBXGroup;
 			children = (
+				C30F8AEC18166C5200C092F1 /* MediaPlayerController */,
 				C3C6DBCB180D37340045E8F6 /* Fonts */,
 				C348A540180C22F200C49540 /* Config files */,
 				C30BDE89180BD64600D5C5D3 /* Images */,
@@ -647,6 +667,7 @@
 				C3DF64A1180D70F900C10F46 /* cover-6.jpg in Resources */,
 				C3DF64A2180D70F900C10F46 /* cover-7.jpg in Resources */,
 				C31F954D180E773D00A26A99 /* InfoViewAnimationController.xib in Resources */,
+				C30F8AF118166C8500C092F1 /* MediaPlayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +734,7 @@
 				C3C6DBCA180D25880045E8F6 /* InfoViewController.m in Sources */,
 				C3DF64A8180D8E0D00C10F46 /* DropDownMenu.m in Sources */,
 				C31F954C180E773D00A26A99 /* InfoViewAnimationController.m in Sources */,
+				C30F8AF018166C8500C092F1 /* MediaPlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #import "Colors.h"
 #import "InfoViewController.h"
 #import "InfoViewAnimationController.h"
+#import "MediaPlayerViewController.h"
 
 
 #define ANIMATION_DURATION 0.2
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) ContentViewController *currentContentViewController;
 @property (strong, nonatomic) ViewControllerHandler *viewControllerHandler;
 @property (strong, nonatomic) InfoViewAnimationController *popOverController;
+@property (strong, nonatomic) MediaPlayerViewController *mediaPlayerViewController;
 @property (strong, nonatomic) UIView *shadowView;
 @property (nonatomic) CGPoint centerOfScreen;
 @property (nonatomic) BOOL menuIsActive;
@@ -81,24 +83,6 @@
     }else{
         [self showMenuWithAnimation];
     }
-}
-
-- (IBAction)buttonResizePressed:(id)sender {
-    
-    CGFloat newConstant;
-    if (self.contentWindowIsSmall) {
-        newConstant = 0;
-    }else{
-        newConstant = self.shrinkingDistance;
-    }
-    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.contentTrailingConstraint.constant = newConstant;
-        [self.view layoutIfNeeded];
-        self.contentWindowIsSmall = !self.contentWindowIsSmall;
-    } completion:^(BOOL finished){
-    
-    }];
-    
 }
 
 - (IBAction)panGestureHappened:(id)sender
@@ -219,22 +203,19 @@
 {
     [self addChildViewController:viewController];
     [viewController didMoveToParentViewController:self];
-    [self.mainPlaceholder addSubview:viewController.view];
+    [self.contentPlaceholder addSubview:viewController.view];
     viewController.delegate = (id) self;
     self.currentContentViewController = viewController;
-    [self.mainPlaceholder bringSubviewToFront:self.topBar];
+    //[self.contentPlaceholder bringSubviewToFront:self.topBar];
 }
 
 -(void)setFrameForContentViewController
 {
     [self.currentContentViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-
-    self.contentTrailingConstraint = [NSLayoutConstraint constraintWithItem:self.currentContentViewController.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.mainPlaceholder attribute:NSLayoutAttributeRight multiplier:1 constant:0];
-    [self.mainPlaceholder addConstraint:self.contentTrailingConstraint];
-    [self.mainPlaceholder addConstraint:[NSLayoutConstraint constraintWithItem:self.currentContentViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.mainPlaceholder attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
     
+    [self.contentPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[content]|" options:0 metrics:nil views:@{@"content": self.currentContentViewController.view}]];
     
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topBar][contentView]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"contentView" : self.currentContentViewController.view}]];
+    [self.contentPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:@{@"contentView" : self.currentContentViewController.view}]];
     [self.view layoutIfNeeded];
 }
 // ContentViewControllerDelegate - called from current content view controller
@@ -263,10 +244,10 @@
 -(void) addShadowView
 {
     self.shadowView = [[UIView alloc] init];
-    [self.mainPlaceholder addSubview:self.shadowView];
+    [self.contentPlaceholder addSubview:self.shadowView];
     [self.shadowView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[shadowView]|" options:0 metrics:nil views:@{@"shadowView": self.shadowView}]];
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[shadowView]|" options:0 metrics:nil views:@{@"shadowView": self.shadowView}]];
+    [self.contentPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[shadowView]|" options:0 metrics:nil views:@{@"shadowView": self.shadowView}]];
+    [self.contentPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[shadowView]|" options:0 metrics:nil views:@{@"shadowView": self.shadowView}]];
     self.shadowView.backgroundColor = [UIColor blackColor];
     self.shadowView.alpha = 0;
     
@@ -287,9 +268,54 @@
             [self.shadowView removeFromSuperview];
             self.shadowView = nil;
         }
-        
     }];
     
+}
+-(void) mediaSelectedForWatching:(NSString *)media
+{
+    self.mediaPlayerViewController = [[MediaPlayerViewController alloc] initWithMediaObject:media];
+    self.mediaPlayerViewController.delegate = (id) self;
+    [self addMediaPlayerControllerToView];
+    [self setFrameForMediaPlayerViewController];
+
+    [self resizeContentWindowBySettingTrailingConstraintTo:self.shrinkingDistance];
+}
+-(void) resizeContentWindowBySettingTrailingConstraintTo:(CGFloat) distance
+{
+    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.contentPlaceholderTrailingConstraint.constant = distance;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished){}];
+}
+-(void) addMediaPlayerControllerToView
+{
+    [self addChildViewController:self.mediaPlayerViewController];
+    [self.mainPlaceholder addSubview:self.mediaPlayerViewController.view];
+    [self.mediaPlayerViewController didMoveToParentViewController:self];
+}
+-(void) setFrameForMediaPlayerViewController
+{
+    [self.mediaPlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[contentPlaceholder][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"contentPlaceholder": self.contentPlaceholder , @"mediaPlayerViewController": self.mediaPlayerViewController.view}]];
+    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topBar][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"mediaPlayerViewController" : self.mediaPlayerViewController.view}]];
+    [self.view layoutIfNeeded];
+}
+-(void) closeMediaPlayerViewController
+{
+    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.contentPlaceholderTrailingConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished){
+        if (finished) {
+            [self removeMediaPlayerViewControllerFromView];
+        }
+    }];
+}
+-(void) removeMediaPlayerViewControllerFromView
+{
+    [self.mediaPlayerViewController removeFromParentViewController];
+    [self.mediaPlayerViewController.view removeFromSuperview];
+    self.mediaPlayerViewController = nil;
 }
 
 @end

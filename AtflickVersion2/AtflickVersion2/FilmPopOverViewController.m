@@ -44,6 +44,11 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     }
     return self;
 }
+
+- (IBAction)trailerButtonTapped:(id)sender {
+    
+    [self.delegate mediaObjectSelectedInInfoView:@"http://front1.tele2play.com/liveorigin/cartoonnetwork.stream/playlist.m3u8"];
+}
 -(void) viewDidLayoutSubviews
 {
     self.labelDescription.numberOfLines = 0;
@@ -92,8 +97,8 @@ static NSString * const cellIdentifier = @"cellIdentifier";
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Movie *movie = [self.itemsCollectionView objectAtIndex:indexPath.item];
-    FilmPopOverViewController *popOver = [[FilmPopOverViewController alloc] initWithMovieObject: movie];
-    [self.delegate presentPopOver:popOver];
+    FilmPopOverViewController *infoView = [[FilmPopOverViewController alloc] initWithMovieObject: movie];
+    [self.delegate newInfoViewRequestedFromInfoView:(UIViewController *) infoView];
     
 }
 - (void)didReceiveMemoryWarning

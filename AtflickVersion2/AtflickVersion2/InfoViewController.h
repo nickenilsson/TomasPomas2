@@ -10,7 +10,8 @@
 
 @protocol PopOverViewDelegate <NSObject>
 
--(void) presentPopOver:(UIViewController *) popOver;
+-(void) newInfoViewRequestedFromInfoView:(UIViewController *) infoView;
+-(void) mediaObjectSelectedInInfoView:(NSString *) media;
 
 @end
 
