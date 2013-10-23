@@ -59,9 +59,11 @@
     
     dispatch_async(myQueue, ^{
         self.moviePlayerController = [[MPMoviePlayerController alloc] init];
+        [self.moviePlayerController setContentURL:self.mediaUrl];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.activityIndicator stopAnimating];
             [self setUpMediaPlayer];
+
         });
     });
     
@@ -69,15 +71,14 @@
 -(void) setUpMediaPlayer
 {
     [self.playerPlaceholder addSubview:self.moviePlayerController.view];
-
     [self.playerPlaceholder setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.moviePlayerController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [self.playerPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[moviePlayer]|" options:0 metrics:nil views:@{@"moviePlayer": self.moviePlayerController.view}]];
     [self.playerPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[moviePlayer]|" options:0 metrics:nil views:@{@"moviePlayer": self.moviePlayerController.view}]];
     self.moviePlayerController.scalingMode = MPMovieScalingModeAspectFit;
-    [self.moviePlayerController setContentURL:self.mediaUrl];
     [self.moviePlayerController play];
+
 
 }
 - (void)didReceiveMemoryWarning

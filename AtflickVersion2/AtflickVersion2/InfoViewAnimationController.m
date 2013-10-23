@@ -25,6 +25,7 @@
 @property (nonatomic) CGFloat XPositionFarOffLeft;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (strong, nonatomic) UIViewController *currentViewInCenter;
 @property (strong, nonatomic) UIViewController *currentViewToTheLeft;
 
@@ -55,9 +56,17 @@
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(close:)];
     self.tapGestureRecognizer.delegate = (id)self;
 
+    
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self      action: @selector(rightSwipeHappened:)];
+    [self.swipeGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    self.swipeGestureRecognizer.delegate = (id) self;
+    
+
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
     
     [self.view addGestureRecognizer:self.panGestureRecognizer];
+    
+    [self.view addGestureRecognizer:self.swipeGestureRecognizer];
     self.view.clipsToBounds = YES;
 }
 
@@ -182,6 +191,15 @@
     UIViewController *infoViewComingToCenter = (UIViewController *)[self objectIn:self.infoViews atIndexFromLast:1];
     self.currentViewInCenter = infoViewComingToCenter;
     
+    if (self.infoViews.count > 2 && self.oldInfoView == nil) {
+        self.oldInfoView = (InfoViewController *)[self objectIn:self.infoViews atIndexFromLast:2];
+        self.oldInfoViewConstraint = (NSLayoutConstraint *)[self objectIn:self.horizontalConstraints atIndexFromLast:2];
+        [self addInfoView:self.oldInfoView];
+        [self setSizeAndAlignVertically:self.oldInfoView];
+        [self.view addConstraint:self.oldInfoViewConstraint];
+        self.oldInfoViewConstraint.constant = self.XPositionFarOffLeft;
+    }
+    
     [UIView animateWithDuration:DURATION_SLIDE delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         constraintViewToRemove.constant = self.XPositionRightOfScreen;
         infoViewToRemove.view.alpha = 0;
@@ -195,6 +213,8 @@
             [infoViewToRemove removeFromParentViewController];
             [infoViewToRemove.view removeFromSuperview];
             infoViewToRemove = nil;
+            self.oldInfoView = nil;
+            self.oldInfoViewConstraint = nil;
             [self.view removeConstraint:constraintViewToRemove];
             [self.infoViews removeLastObject];
             [self.horizontalConstraints removeLastObject];
@@ -217,7 +237,6 @@
     
     if (self.infoViews.count > 2) {
         if ([sender state] == UIGestureRecognizerStateBegan) {
-            NSLog(@"touch began");
             self.oldInfoView = (InfoViewController *)[self objectIn:self.infoViews atIndexFromLast:2];
             self.oldInfoViewConstraint = (NSLayoutConstraint *)[self objectIn:self.horizontalConstraints atIndexFromLast:2];
             [self addInfoView:self.oldInfoView];
@@ -286,13 +305,9 @@
         self.oldInfoViewConstraint = nil;
     }];
 }
--(void) swipeHappened:(UIGestureRecognizer *)sender
+-(void) rightSwipeHappened:(UIGestureRecognizer *)sender
 {
-    NSLog(@"swipeHappened");
-    if (self.infoViews.count > 1 && [sender state] == UISwipeGestureRecognizerDirectionRight){
-        [self goBackToPreviousInfoView];
-    }
-
+    [self goBackToPreviousInfoView];
 }
 -(void) newInfoViewRequestedFromInfoView:(UIViewController *)infoView
 {
