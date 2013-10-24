@@ -15,15 +15,18 @@
 #import "Movie.h"
 #import "OverviewController2.h"
 #import "Colors.h"
-
-
+#import "MovieDAO.h"
+#import "PopOverContentViewController.h"
 
 @interface FilmContentViewController ()
 
 @property (strong, nonatomic) ContentDisplayView *contentViewController;
-@property (strong, nonatomic) NSMutableArray *dropDownMenuOptions;
-@property (strong, nonatomic) NSArray *dropDownMenuTitles;
 @property (strong, nonatomic) NSLayoutConstraint *contentWidthConstraint;
+@property (strong, nonatomic) NSMutableArray *movies;
+@property (strong, nonatomic) UIPopoverController *popOverController;
+@property (strong, nonatomic) NSMutableArray *popOverTitles;
+@property (strong, nonatomic) NSMutableArray *popOverOptions;
+
 
 @end
 
@@ -37,27 +40,41 @@
     }
     return self;
 }
--(void) viewWillLayoutSubviews
-{
-
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.contentOptionsBar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self initialViewSetup];
+    [self requestDataToDisplay];
+    [self createDataForPopOver];
     [self addContentDisplayView:[[OverviewController2 alloc] init]];
 
     [self setConstraintsForContentDisplayView];
     self.contentOptionsBar.backgroundColor = COLOR_CONTENT_OPTIONS_BAR;
-    [self setupDropDownMenu];
-    [self.dropDownMenu setTitle:[self.dropDownMenuTitles objectAtIndex:0]];
-
+   
+}
+-(void) initialViewSetup
+{
+    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.contentOptionsBar setTranslatesAutoresizingMaskIntoConstraints:NO];
 }
 
+-(void) requestDataToDisplay
+{
+    // request data from future movieHtthpClient
+    self.movies = [MovieDAO getMoviesTest];
+}
+-(void) createDataForPopOver
+{
+    self.popOverTitles = [NSMutableArray arrayWithObjects:@"Overview",@"Featured",@"Recommended",@"New on Atflick", nil];
+    
+    self.popOverOptions = [NSMutableArray arrayWithCapacity:self.popOverTitles.count];
+    for (int i = 0; i < self.popOverTitles.count; i++) {
+        [self.popOverOptions addObject:[NSNumber numberWithInt:i]];
+    }
+}
 -(void) addContentDisplayView:(ContentDisplayView *) displayView
 {
     [self addChildViewController:displayView];
@@ -77,45 +94,11 @@
 -(void) setConstraintsForContentDisplayView
 {
     [self.contentViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[content]|" options:0 metrics:nil views:@{@"content": self.contentViewController.view}]];;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[optionsBar][content]|" options:0 metrics:nil views:@{@"optionsBar": self.contentOptionsBar, @"content" : self.contentViewController.view}]];
-    [self.view bringSubviewToFront:self.dropDownMenu];
     [self.view sendSubviewToBack:self.contentViewController.view];
 }
--(void) setupDropDownMenu
-{
-    self.dropDownMenu.delegate = (id) self;
-    self.dropDownMenuTitles = [NSArray arrayWithObjects:@"Overview",@"Featured",@"Recommended",@"Popular", nil];
-    self.dropDownMenuOptions = [NSMutableArray arrayWithCapacity:self.dropDownMenuTitles.count];
-    for (int i = 0; i < self.dropDownMenuTitles.count; i++) {
-        [self.dropDownMenuOptions addObject:[NSNumber numberWithInt:i]];
-    }
-    [self.dropDownMenu setSelectionOptions:self.dropDownMenuOptions withTitles:self.dropDownMenuTitles];
-}
-- (void)dropDownControlView:(DropDownMenu *)view didFinishWithSelection:(id)selection
-{
-    int index = [selection integerValue];
-    switch (index) {
-        case 0:{
-            [self.dropDownMenu setTitle:[self.dropDownMenuTitles objectAtIndex:index]];
-            [self removeCurrentContentDisplayView];
-            [self addContentDisplayView:[[OverviewController2 alloc]init]];
-            [self setConstraintsForContentDisplayView];
-             
-            break;
-        }
-        default:{
-        
-            [self.dropDownMenu setTitle:[self.dropDownMenuTitles objectAtIndex:index]];
-            [self removeCurrentContentDisplayView];
-            [self addContentDisplayView:[[SmartCollectionViewController alloc]init]];
-            [self setConstraintsForContentDisplayView];
 
-            break;        
-        }
-    }
-}
 -(void) objectSelectedInDisplayView:(id)object
 {
     Movie *movie = (Movie *)object;
@@ -129,4 +112,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)PopOverMenuButtonTapped:(UIButton *)sender {
+    
+    PopOverContentViewController *popOverContent = [[PopOverContentViewController alloc]initWithMenuTitles:self.popOverTitles menuOptions:self.popOverOptions];
+    popOverContent.delegate = (id) self;
+    
+     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:popOverContent];
+    [self.popOverController presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
 @end

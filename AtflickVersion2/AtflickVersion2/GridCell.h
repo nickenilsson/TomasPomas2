@@ -10,8 +10,8 @@
 
 @interface GridCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 +(UINib *) nib;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

@@ -24,6 +24,8 @@
 		C34B8AAA17FC54B000014C1E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34B8AA917FC54B000014C1E /* ContentViewController.m */; };
 		C34BA707180BE7A300D26F96 /* PopOverController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34BA705180BE7A300D26F96 /* PopOverController.m */; };
 		C34BA708180BE7A300D26F96 /* PopOverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C34BA706180BE7A300D26F96 /* PopOverController.xib */; };
+		C3AA7B58181908A7001E7394 /* PopOverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AA7B56181908A7001E7394 /* PopOverContentViewController.m */; };
+		C3AA7B59181908A7001E7394 /* PopOverContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3AA7B57181908A7001E7394 /* PopOverContentViewController.xib */; };
 		C3B8A2261802E39100E19861 /* FilmPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */; };
 		C3B8A2271802E39100E19861 /* FilmPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */; };
 		C3BEDDD517FAB49D00E807D4 /* ContentDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BEDDD417FAB49D00E807D4 /* ContentDisplayView.m */; };
@@ -123,6 +125,9 @@
 		C34BA704180BE7A300D26F96 /* PopOverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverController.h; sourceTree = "<group>"; };
 		C34BA705180BE7A300D26F96 /* PopOverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverController.m; sourceTree = "<group>"; };
 		C34BA706180BE7A300D26F96 /* PopOverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopOverController.xib; sourceTree = "<group>"; };
+		C3AA7B55181908A7001E7394 /* PopOverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverContentViewController.h; sourceTree = "<group>"; };
+		C3AA7B56181908A7001E7394 /* PopOverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverContentViewController.m; sourceTree = "<group>"; };
+		C3AA7B57181908A7001E7394 /* PopOverContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopOverContentViewController.xib; sourceTree = "<group>"; };
 		C3B8A2231802E39000E19861 /* FilmPopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmPopOverViewController.h; sourceTree = "<group>"; };
 		C3B8A2241802E39000E19861 /* FilmPopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmPopOverViewController.m; sourceTree = "<group>"; };
 		C3B8A2251802E39100E19861 /* FilmPopOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmPopOverViewController.xib; sourceTree = "<group>"; };
@@ -317,6 +322,16 @@
 			name = popOverViews;
 			sourceTree = "<group>";
 		};
+		C3AA7B5418190875001E7394 /* PopOverMenuContent */ = {
+			isa = PBXGroup;
+			children = (
+				C3AA7B55181908A7001E7394 /* PopOverContentViewController.h */,
+				C3AA7B56181908A7001E7394 /* PopOverContentViewController.m */,
+				C3AA7B57181908A7001E7394 /* PopOverContentViewController.xib */,
+			);
+			name = PopOverMenuContent;
+			sourceTree = "<group>";
+		};
 		C3BEDDD617FAB4CC00E807D4 /* ViewTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +464,7 @@
 		C3F74A9F17F5B86D009DD81F /* AtflickVersion2 */ = {
 			isa = PBXGroup;
 			children = (
+				C3AA7B5418190875001E7394 /* PopOverMenuContent */,
 				C30F8AEC18166C5200C092F1 /* MediaPlayerController */,
 				C3C6DBCB180D37340045E8F6 /* Fonts */,
 				C348A540180C22F200C49540 /* Config files */,
@@ -668,6 +684,7 @@
 				C3DF64A2180D70F900C10F46 /* cover-7.jpg in Resources */,
 				C31F954D180E773D00A26A99 /* InfoViewAnimationController.xib in Resources */,
 				C30F8AF118166C8500C092F1 /* MediaPlayerViewController.xib in Resources */,
+				C3AA7B59181908A7001E7394 /* PopOverContentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +752,7 @@
 				C3DF64A8180D8E0D00C10F46 /* DropDownMenu.m in Sources */,
 				C31F954C180E773D00A26A99 /* InfoViewAnimationController.m in Sources */,
 				C30F8AF018166C8500C092F1 /* MediaPlayerViewController.m in Sources */,
+				C3AA7B58181908A7001E7394 /* PopOverContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

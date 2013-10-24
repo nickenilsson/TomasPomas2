@@ -54,6 +54,9 @@
     movies = [self getHeadliningMovies];
     [movies addObjectsFromArray:[self getHeadliningMovies]];
     [movies addObjectsFromArray:[self getHeadliningMovies]];
+    [movies addObjectsFromArray:[self getHeadliningMovies]];
+    [movies addObjectsFromArray:[self getHeadliningMovies]];
+    [movies addObjectsFromArray:[self getHeadliningMovies]];
 
     return movies;
 }

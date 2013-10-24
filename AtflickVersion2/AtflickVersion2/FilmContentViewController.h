@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ContentDisplayView.h"
 #import "ContentViewController.h"
-#import "DropDownMenu.h"
 
-@interface FilmContentViewController : ContentViewController <ContentDisplayViewDelegate, DropDownMenuDelegate>
+@interface FilmContentViewController : ContentViewController <ContentDisplayViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *contentOptionsBar;
-@property (weak, nonatomic) IBOutlet DropDownMenu *dropDownMenu;
+- (IBAction)PopOverMenuButtonTapped:(UIButton *)sender;
 
 @end

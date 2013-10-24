@@ -10,7 +10,7 @@
 #import "FilmPopOverViewController.h"
 
 #define MAX_NUMBER_OF_INFOVIEWS 10
-#define DURATION_SLIDE 0.3
+#define DURATION_SLIDE 0.2
 #define PADDING 20
 #define SIZE_CONSTANT 0.8
 

@@ -16,7 +16,6 @@
 
 @interface MediaPlayerViewController : UIViewController
 
-
 - (IBAction)buttonCloseTapped:(id)sender;
 - (id)initWithMediaObject:(NSString *) mediaObject;
 

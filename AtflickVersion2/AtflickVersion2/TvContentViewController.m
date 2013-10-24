@@ -13,7 +13,6 @@
 @interface TvContentViewController ()
 
 @property (strong, nonatomic) ContentDisplayView *currentDisplayViewController;
-@property (strong, nonatomic) NSArray *dropDownTitles;
 
 @end
 
@@ -39,17 +38,6 @@
     [self.view sendSubviewToBack:self.contentPlaceholderScrollView];
     [self.currentDisplayViewController didMoveToParentViewController:self];
     
-    self.dropDownTitles = [NSArray arrayWithObjects:@"Featured", @"Overview",@"New Movies",@"Popular",@"Recommended",  nil];
-    NSMutableArray *options = [[NSMutableArray alloc]initWithCapacity:0];
-    
-    for (int i = 0; i < self.dropDownTitles.count; i++) {
-        [options addObject:[NSNumber numberWithInt:i+1]];
-    }
-
-    [self.dropDownMenu setTitle:@"Overview"];
-    [self.dropDownMenu setSelectionOptions:options withTitles:self.dropDownTitles];
-    self.dropDownMenu.delegate = (id) self;
-    
     self.contentPlaceholderScrollView.contentSize = self.currentDisplayViewController.view.bounds.size;
 }
 
@@ -65,23 +53,7 @@
     [self.currentDisplayViewController.view removeFromSuperview];
     self.currentDisplayViewController = nil;
 }
--(void) setContainerScrollEnabled:(BOOL) value
-{
-    self.contentPlaceholderScrollView.scrollEnabled = value;
-}
 
-- (void)dropDownControlView:(DropDownMenu *)view didFinishWithSelection:(id)selection
-{
-    if(selection != nil){
-        [self.dropDownMenu setTitle:[self.dropDownTitles objectAtIndex:[selection integerValue]-1]];
-    }
-}
-//Superview is changing it's frame
--(void) superViewChangingToFrame:(CGRect)frame
-{
-    self.currentDisplayViewController.view.frame = CGRectMake(self.currentDisplayViewController.view.frame.origin.x, self.currentDisplayViewController.view.frame.origin.y, frame.size.width, self.currentDisplayViewController.view.frame.size.height);
-
-}
 
 
 

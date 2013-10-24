@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ContentDisplayView.h"
 
-@interface SmartCollectionViewController : ContentDisplayView <UICollectionViewDelegateFlowLayout>
+@interface SmartCollectionViewController : ContentDisplayView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+-(id) initWithItems:(NSMutableArray *) items;
 
 - (IBAction)buttonListTapped:(id)sender;
 - (IBAction)buttonGridTapped:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

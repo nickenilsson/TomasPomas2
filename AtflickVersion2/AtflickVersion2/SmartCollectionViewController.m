@@ -14,34 +14,23 @@
 #import "GridFlowLayout.h"
 #import "GridCell.h"
 #import "ListCell.h"
+#import "Movie.h"
 
-static NSString* const cellIdentifier = @"cellIdentifier";
+static NSString* const cellIdentifierList = @"cellIdentifierList";
+static NSString* const cellIdentifierGrid = @"cellIdentifierGrid";
+
 
 @interface SmartCollectionViewController ()
 
 @property (nonatomic) BOOL inListMode;
 @property (strong, nonatomic) NSMutableArray *items;
-@property (strong, nonatomic) ArrayDataSource *datasource;
 @property (strong, nonatomic) UINib *cellNib;
 
 @end
 
 @implementation SmartCollectionViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
--(void) viewWillLayoutSubviews
-{
-
-}
-
--(id) initWithItems:(NSArray *) items 
+-(id) initWithItems:(NSMutableArray *) items
 {
     self = [super init];
     if(self){
@@ -56,27 +45,11 @@ static NSString* const cellIdentifier = @"cellIdentifier";
     // Do any additional setup after loading the view from its nib.
     self.inListMode = NO;
 
-    self.items = [NSMutableArray arrayWithObjects:@"item 1",@"Item 3",@"Item 4",@"Item 5",@"Item 6",@"Item 7",@"Item 8",@"Item 9",@"Item 10",@"Item 11",@"Item 12",@"Item 13",@"Item 14",@"Item 15",@"Item 16",@"Item 17",@"Item 18",@"Item 19",@"Item 20", nil];
-    [self.collectionView registerNib:[ImageCell nib] forCellWithReuseIdentifier:cellIdentifier];
+    [self.collectionView registerNib:[GridCell nib] forCellWithReuseIdentifier:cellIdentifierGrid];
+    [self.collectionView registerNib:[ListCell nib] forCellWithReuseIdentifier:cellIdentifierList];
     
-    CellConfigureBlock cellConfiguration = ^(ImageCell *cell, NSString *item){
-        if ([self.collectionView.collectionViewLayout isKindOfClass:[ListFlowLayout class]]) {
-            
-        }
-        //cell.label.text = item;
-        /*
-        cell.layer.masksToBounds = NO;
-        cell.layer.shadowOffset = CGSizeMake(0, 1);
-        cell.layer.shadowRadius = 1.4;
-        cell.layer.shadowColor = [UIColor blackColor].CGColor;
-        cell.layer.shadowOpacity = 1;
-        [cell.layer setShadowPath:[[UIBezierPath bezierPathWithRect:cell.bounds] CGPath]];
-        cell.layer.shouldRasterize = YES;
-         */
-    };
-    self.datasource = [[ArrayDataSource alloc] initWithItems:self.items cellIdentifier:cellIdentifier configureCellBlock:cellConfiguration];
-    self.collectionView.dataSource = self.datasource;
     self.collectionView.delegate = (id) self;
+    self.collectionView.dataSource = (id)self;
     self.collectionView.collectionViewLayout = [[GridFlowLayout alloc] init];
 
 }
@@ -89,22 +62,47 @@ static NSString* const cellIdentifier = @"cellIdentifier";
 
 - (IBAction)buttonListTapped:(id)sender {
     if(!self.inListMode){
-        [self.collectionView setCollectionViewLayout:[[ListFlowLayout alloc]init] animated:YES];
+        [self.collectionView setCollectionViewLayout:[[ListFlowLayout alloc]init] animated:NO];
         [self.collectionView.collectionViewLayout invalidateLayout];
-
+        
+        [self.collectionView reloadData];
         self.inListMode = YES;
     }
 }
 
 - (IBAction)buttonGridTapped:(id)sender {
     if(self.inListMode){
-        [self.collectionView setCollectionViewLayout:[[GridFlowLayout alloc]init] animated:YES];
+        [self.collectionView setCollectionViewLayout:[[GridFlowLayout alloc]init] animated:NO];
         [self.collectionView.collectionViewLayout invalidateLayout];
 
+        [self.collectionView reloadData];
         self.inListMode = NO;
 
     }
 }
+// Collection view
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.items.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Movie *movie = [self.items objectAtIndex:indexPath.item];
+    
+    if ([self.collectionView.collectionViewLayout isKindOfClass:[ListFlowLayout class]]) {
+        ListCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifierList forIndexPath:indexPath];
+        cell.bigLabel.text = movie.title;
+        cell.imageView.image = [UIImage imageNamed:movie.imageNameSmall];
+        return cell;
+    }else{
+        GridCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifierGrid forIndexPath:indexPath];
+        cell.imageView.image = [UIImage imageNamed:movie.imageNameSmall];
+        return cell;
+    }
+}
+
+
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.delegate objectSelectedInDisplayView:[self.items objectAtIndex:indexPath.item]];

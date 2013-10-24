@@ -8,6 +8,7 @@
 
 #import "MediaPlayerViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface MediaPlayerViewController ()
 
@@ -17,10 +18,6 @@
 @end
 
 @implementation MediaPlayerViewController
-
-- (IBAction)buttonPlayTapped:(id)sender {
-
-}
 
 - (IBAction)buttonCloseTapped:(id)sender {
     [self.moviePlayerController stop];
@@ -36,18 +33,7 @@
     return self;
 }
 
--(void)viewWillLayoutSubviews
-{
-    NSLog(@"viewwilllayoutsubviews");
 
-}
--(void) viewDidLayoutSubviews
-{
-    
-    NSLog(@"viewdidlayoutsubviews");
-
-
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -66,7 +52,18 @@
 
         });
     });
+    [self styleView];
     
+}
+-(void) styleView
+{
+    self.view.layer.shadowColor = [[UIColor blackColor]CGColor];
+    self.view.layer.shadowOpacity = 1;
+    self.view.layer.shadowOffset = CGSizeMake(-1,0 );
+    CGRect shadowRect = CGRectInset(self.view.bounds, 0, 2);
+    self.view.layer.shadowPath = [[UIBezierPath bezierPathWithRect:shadowRect]CGPath];
+    self.view.layer.shadowRadius = 1;
+    self.view.layer.shouldRasterize = YES;
 }
 -(void) setUpMediaPlayer
 {
@@ -78,12 +75,11 @@
     [self.playerPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[moviePlayer]|" options:0 metrics:nil views:@{@"moviePlayer": self.moviePlayerController.view}]];
     self.moviePlayerController.scalingMode = MPMovieScalingModeAspectFit;
 
-    
+    [self.moviePlayerController setContentURL:self.mediaUrl];
+
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue2",NULL);
 
     dispatch_async(myQueue, ^{
-        [self.moviePlayerController setContentURL:self.mediaUrl];
-
         [self.moviePlayerController play];
     });
 

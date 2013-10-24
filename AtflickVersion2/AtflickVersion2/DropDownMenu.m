@@ -89,8 +89,6 @@
         return;
     }
     
-    
-    
     // Selection animation
     if (self.selectionIndex != NSNotFound) {
         UIView *cell = [self.selectionCells objectAtIndex:self.selectionIndex];
@@ -153,56 +151,7 @@
     self.selectionTitles = selectionOptionTitles;
     self.selectionCells = nil;
 }
-/*
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if ([touches count] != 1){
-        return;
-    }
-        
-    UITouch *touch = [touches anyObject];
-    
-    // Calculate the selection index
-    CGPoint location = [touch locationInView:self];
-    if ((CGRectContainsPoint(self.bounds, location)) && (location.y > self.baseFrame.size.height)) {
-        self.selectionIndex = (location.y - self.baseFrame.size.height) / self.cellSize.height;
-    } else {
-        self.selectionIndex = NSNotFound;
-    }
-    
-    if (self.selectionIndex == self.previousSelectionIndex)
-        return;
-    
-    // Selection animation
-    if (self.selectionIndex != NSNotFound) {
-        UIView *cell = [self.selectionCells objectAtIndex:self.selectionIndex];
-        [UIView animateWithDuration:DURATION_EXPAND animations:^{
-            cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-            UILabel *title = [cell.subviews objectAtIndex:0];
-            title.textColor = [UIColor cyanColor];
 
-        }];
-    }
-    if (self.previousSelectionIndex != NSNotFound) {
-        UIView *cell = [self.selectionCells objectAtIndex:self.previousSelectionIndex];
-        [UIView animateWithDuration:DURATION_EXPAND animations:^{
-            cell.backgroundColor = [UIColor clearColor];
-            UILabel *title = [cell.subviews objectAtIndex:0];
-            title.textColor = TEXT_COLOR;
-        }];
-    }
-    self.previousSelectionIndex = self.selectionIndex;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self deactivateMenu];
-    if (self.selectionIndex < [self.selectionOptions count]) {
-        [self.delegate dropDownControlView:self didFinishWithSelection:[self.selectionOptions objectAtIndex:self.selectionIndex]];
-    } else {
-        [self.delegate dropDownControlView:self didFinishWithSelection:nil];
-    }
-    
-}
-*/
 
 -(void) activateMenu
 {
