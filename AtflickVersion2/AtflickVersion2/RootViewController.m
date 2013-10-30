@@ -11,11 +11,12 @@
 #import "FilmContentViewController.h"
 #import "TvContentViewController.h"
 #import "ViewControllerHandler.h"
-#import "PopOverController.h"
 #import "Colors.h"
 #import "InfoViewController.h"
 #import "InfoViewAnimationController.h"
 #import "MediaPlayerViewController.h"
+#import "NotificationNames.h"
+#import "Movie.h"
 
 
 #define ANIMATION_DURATION 0.2
@@ -27,7 +28,6 @@
 
 @property (strong, nonatomic) MainMenuViewController *mainmenuViewController;
 @property (strong, nonatomic) ContentViewController *currentContentViewController;
-@property (strong, nonatomic) ViewControllerHandler *viewControllerHandler;
 @property (strong, nonatomic) InfoViewAnimationController *popOverController;
 @property (strong, nonatomic) MediaPlayerViewController *mediaPlayerViewController;
 @property (strong, nonatomic) UIView *shadowView;
@@ -40,8 +40,8 @@
 @property (nonatomic) CGFloat shrinkingDistance;
 @property (strong, nonatomic) NSLayoutConstraint *contentTrailingConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *menuLeadingConstraint;
-
-
+@property (strong, nonatomic) SaveToPlaylistViewController *saveToPlaylistViewController;
+@property (strong, nonatomic) NSLayoutConstraint *saveToPlaylistViewControllerVerticalConstraint;
 
 @end
 
@@ -59,24 +59,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initialSetup];
+}
+
+-(void) initialSetup
+{
     self.contentWindowIsSmall = NO;
     self.shrinkingDistance = -self.view.frame.size.width/3;
     self.maxPanWidth = self.view.bounds.size.width/3;
     self.maxPanWidthMenu = -self.maxPanWidth / 8;
     [self.mainPlaceholder setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.topBar setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.viewControllerHandler = [[ViewControllerHandler alloc]init];
     
     self.centerOfScreen = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
     [self menuItemSelectedWithIndex:1];
+    [self registerForNotifications];
 
 }
-- (void)didReceiveMemoryWarning
+-(void) setupCGStyling
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.topBar.layer.borderColor = [[UIColor blackColor]CGColor];
+    self.topBar.layer.borderWidth = 4;
 }
-
 - (IBAction)buttonMenuPressed:(id)sender {
     if(self.menuIsActive){
         [self hideMenuWithAnimation];
@@ -105,6 +109,16 @@
     self.placeholderLeadingConstraint.constant = newConstantMainPlaceholder;
     self.menuLeadingConstraint.constant = newConstantForMenu;
     
+    //Pause media player if off screen.
+    if (self.placeholderLeadingConstraint.constant > self.maxPanWidth/2) {
+        if (self.mediaPlayerViewController != nil) {
+            [self.mediaPlayerViewController pause];
+        }
+    }else{
+        if (self.mediaPlayerViewController != nil) {
+            [self.mediaPlayerViewController continuePlaying];
+        }
+    }
     if ([sender state] == UIGestureRecognizerStateEnded) {
         if (self.placeholderLeadingConstraint.constant > (self.maxPanWidth / 2)) {
             [self showMenuWithAnimation];
@@ -132,6 +146,9 @@
     } completion:^(BOOL finished){
         if (finished) {
             self.menuIsActive = YES;
+            if (self.mediaPlayerViewController != nil) {
+                [self.mediaPlayerViewController pause];
+            }
         }
     }];
 }
@@ -147,6 +164,10 @@
         if (finished) {
             self.menuIsActive = NO;
             [self removeMainMenu];
+            if (self.mediaPlayerViewController != nil) {
+                [self.mediaPlayerViewController continuePlaying];
+            }
+
         }
     }];
 }
@@ -185,7 +206,7 @@
 -(void) menuItemSelectedWithIndex:(NSUInteger)index
 {
     [self removeCurrentContentViewController];
-    ContentViewController *viewControllerToAdd = [self.viewControllerHandler contentViewControllerCorrespondingToIndex:index];
+    ContentViewController *viewControllerToAdd = [ViewControllerHandler contentViewControllerCorrespondingToIndex:index];
     [self addContentViewController:viewControllerToAdd];
     [self setFrameForContentViewController];
     [self hideMenuWithAnimation];
@@ -206,7 +227,6 @@
     [self.contentPlaceholder addSubview:viewController.view];
     viewController.delegate = (id) self;
     self.currentContentViewController = viewController;
-    //[self.contentPlaceholder bringSubviewToFront:self.topBar];
 }
 
 -(void)setFrameForContentViewController
@@ -217,6 +237,105 @@
     
     [self.contentPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:@{@"contentView" : self.currentContentViewController.view}]];
     [self.view layoutIfNeeded];
+}
+-(void) registerForNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMediaObjectToPlaylist:) name:NOTIFICATION_ADD_MOVIE_TO_PLAYLIST object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMediaObjectToFavourites:) name:NOTIFICATION_ADD_MOVIE_TO_FAVOURITES object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playMediaObject:) name:PLAY_MEDIA_OBJECT object:nil];
+}
+-(void) addMediaObjectToPlaylist:(NSNotification *)notification
+{
+    Movie *movie = [[notification userInfo] valueForKey: NOTIFICATION_OBJECT];
+    NSLog(@"Add media object to playlist: %@", movie.title);
+    [self addSaveToPlaylistViewController];
+    [self setFrameForSaveToPlayListViewController];
+    [self animateConstraint:self.saveToPlaylistViewControllerVerticalConstraint toValue:0 duration:ANIMATION_DURATION];
+}
+-(void) playMediaObject:(NSNotification *) notification
+{
+    self.mediaPlayerViewController = [[MediaPlayerViewController alloc] init];
+    self.mediaPlayerViewController.delegate = (id) self;
+    [self addMediaPlayerControllerToView];
+    [self setFrameForMediaPlayerViewController];
+    [self resizeContentWindowBySettingTrailingConstraintTo:self.shrinkingDistance];
+    Movie* movie = (Movie *)[[notification userInfo]valueForKey:NOTIFICATION_OBJECT];
+    [self.mediaPlayerViewController playMediaObject:movie];
+}
+-(void) addMediaPlayerControllerToView
+{
+    [self addChildViewController:self.mediaPlayerViewController];
+    [self.mainPlaceholder addSubview:self.mediaPlayerViewController.view];
+    [self.mediaPlayerViewController didMoveToParentViewController:self];
+}
+-(void) setFrameForMediaPlayerViewController
+{
+    [self.mediaPlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[contentPlaceholder][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"contentPlaceholder": self.contentPlaceholder , @"mediaPlayerViewController": self.mediaPlayerViewController.view}]];
+    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topBar][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"mediaPlayerViewController" : self.mediaPlayerViewController.view}]];
+    [self.view layoutIfNeeded];
+}
+-(void) closeMediaPlayerViewController
+{
+    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.contentPlaceholderTrailingConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished){
+        if (finished) {
+            [self removeMediaPlayerViewControllerFromView];
+        }
+    }];
+}
+-(void) removeMediaPlayerViewControllerFromView
+{
+    [self.mediaPlayerViewController removeFromParentViewController];
+    [self.mediaPlayerViewController.view removeFromSuperview];
+    self.mediaPlayerViewController = nil;
+}
+
+-(void) addSaveToPlaylistViewController
+{
+    self.saveToPlaylistViewController = [[SaveToPlaylistViewController alloc] init];
+    [self addChildViewController:self.saveToPlaylistViewController];
+    [self.saveToPlaylistViewController didMoveToParentViewController:self];
+    [self.contentPlaceholder addSubview:self.saveToPlaylistViewController.view];
+    self.saveToPlaylistViewController.delegate = (id)self;
+}
+-(void) setFrameForSaveToPlayListViewController
+{
+    [self.saveToPlaylistViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.contentPlaceholder addConstraint:[NSLayoutConstraint constraintWithItem:self.saveToPlaylistViewController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.contentPlaceholder attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+    [self.contentPlaceholder addConstraint:[NSLayoutConstraint constraintWithItem:self.saveToPlaylistViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.contentPlaceholder attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+    [self.contentPlaceholder addConstraint:[NSLayoutConstraint constraintWithItem:self.saveToPlaylistViewController.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentPlaceholder attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    self.saveToPlaylistViewControllerVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.saveToPlaylistViewController.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentPlaceholder attribute:NSLayoutAttributeCenterY multiplier:1 constant:self.contentPlaceholder.frame.size.height];
+    
+    [self.contentPlaceholder addConstraint:self.saveToPlaylistViewControllerVerticalConstraint];
+    [self.view layoutIfNeeded];
+}
+-(void) closeSaveToPlayListViewController
+{
+    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.saveToPlaylistViewControllerVerticalConstraint.constant = self.contentPlaceholder.frame.size.height;
+        [self.view layoutIfNeeded];
+
+    } completion:^(BOOL finished){
+        [self.saveToPlaylistViewController removeFromParentViewController];
+        [self.saveToPlaylistViewController.view removeFromSuperview];
+        self.saveToPlaylistViewController = nil;
+    }];
+}
+-(void) animateConstraint:(NSLayoutConstraint *)constraint toValue:(CGFloat) value duration:(CGFloat) duration
+{
+    [UIView animateWithDuration:duration animations:^{
+        constraint.constant = value;
+        [self.view layoutIfNeeded];
+    }];
+}
+-(void) addMediaObjectToFavourites:(NSNotification *)notification
+{
+    Movie *movie = (Movie *)[[notification userInfo] valueForKey: NOTIFICATION_OBJECT];
+    NSLog(@"addMediaObjectToFavourites movie: %@", movie.title);
+    
 }
 // ContentViewControllerDelegate - called from current content view controller
 -(void) presentPopOverViewController:(InfoViewController *) viewController
@@ -271,15 +390,6 @@
     }];
     
 }
--(void) mediaSelectedForWatching:(NSString *)media
-{
-    self.mediaPlayerViewController = [[MediaPlayerViewController alloc] initWithMediaObject:media];
-    self.mediaPlayerViewController.delegate = (id) self;
-    [self addMediaPlayerControllerToView];
-    [self setFrameForMediaPlayerViewController];
-
-    [self resizeContentWindowBySettingTrailingConstraintTo:self.shrinkingDistance];
-}
 -(void) resizeContentWindowBySettingTrailingConstraintTo:(CGFloat) distance
 {
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -287,35 +397,11 @@
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished){}];
 }
--(void) addMediaPlayerControllerToView
+
+- (void)didReceiveMemoryWarning
 {
-    [self addChildViewController:self.mediaPlayerViewController];
-    [self.mainPlaceholder addSubview:self.mediaPlayerViewController.view];
-    [self.mediaPlayerViewController didMoveToParentViewController:self];
-}
--(void) setFrameForMediaPlayerViewController
-{
-    [self.mediaPlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[contentPlaceholder][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"contentPlaceholder": self.contentPlaceholder , @"mediaPlayerViewController": self.mediaPlayerViewController.view}]];
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topBar][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"mediaPlayerViewController" : self.mediaPlayerViewController.view}]];
-    [self.view layoutIfNeeded];
-}
--(void) closeMediaPlayerViewController
-{
-    [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.contentPlaceholderTrailingConstraint.constant = 0;
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished){
-        if (finished) {
-            [self removeMediaPlayerViewControllerFromView];
-        }
-    }];
-}
--(void) removeMediaPlayerViewControllerFromView
-{
-    [self.mediaPlayerViewController removeFromParentViewController];
-    [self.mediaPlayerViewController.view removeFromSuperview];
-    self.mediaPlayerViewController = nil;
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

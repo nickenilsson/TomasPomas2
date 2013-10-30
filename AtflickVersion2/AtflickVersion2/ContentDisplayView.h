@@ -21,6 +21,4 @@
 
 @property (strong, nonatomic) NSMutableArray *items;
 
--(void) setWidth:(CGFloat) width;
-
 @end

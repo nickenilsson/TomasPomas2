@@ -12,7 +12,7 @@
 
 @implementation ViewControllerHandler
 
--(ContentViewController *) contentViewControllerCorrespondingToIndex:(int)index
++(ContentViewController *) contentViewControllerCorrespondingToIndex:(int)index
 {
     ContentViewController *viewController;
     switch (index) {
@@ -29,12 +29,6 @@
             break;
     }
     return viewController;
-}
-
--(UIViewController *) popUpViewForObjectOfType:(int) type
-{
-    
-    return nil;
 }
 
 

@@ -33,8 +33,6 @@
         if (ABS(itemOrigin - proposedContentOffset.x) < ABS(offsetAdjustment)) {
             offsetAdjustment = itemOrigin - proposedContentOffset.x;
         }
-    }    
-    if(proposedContentOffset.x == self.collectionView.contentSize.width - self.collectionViewContentSize.width){
     }
     CGPoint newOffset;
     if(proposedContentOffset.x >= self.collectionViewContentSize.width - self.collectionView.bounds.size.width){

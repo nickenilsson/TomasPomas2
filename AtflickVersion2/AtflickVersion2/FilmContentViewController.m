@@ -8,10 +8,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "FilmContentViewController.h"
-#import "ContentOverviewViewController.h"
 #import "SmartCollectionViewController.h"
 #import "ContentDisplayView.h"
-#import "FilmPopOverViewController.h"
+#import "FilmInfoViewController.h"
 #import "Movie.h"
 #import "OverviewController2.h"
 #import "Colors.h"
@@ -26,7 +25,6 @@
 @property (strong, nonatomic) UIPopoverController *popOverController;
 @property (strong, nonatomic) NSMutableArray *popOverTitles;
 @property (strong, nonatomic) NSMutableArray *popOverOptions;
-
 
 @end
 
@@ -102,7 +100,7 @@
 -(void) objectSelectedInDisplayView:(id)object
 {
     Movie *movie = (Movie *)object;
-    FilmPopOverViewController *popOver = [[FilmPopOverViewController alloc]initWithMovieObject:movie];
+    FilmInfoViewController *popOver = [[FilmInfoViewController alloc]initWithMovieObject:movie];
     [self.delegate presentPopOverViewController:popOver];
 
 }
@@ -118,6 +116,29 @@
     popOverContent.delegate = (id) self;
     
      self.popOverController = [[UIPopoverController alloc] initWithContentViewController:popOverContent];
+    self.popOverController.backgroundColor = COLOR_BACKGROUND_POPOVER;
     [self.popOverController presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
+}
+-(void)popOverMenuItemSelected:(NSNumber *)selection
+{
+    [self.popOverButton setTitle:[self.popOverTitles objectAtIndex:selection.integerValue] forState:UIControlStateNormal];
+    [self.popOverController dismissPopoverAnimated:YES];
+    
+    switch (selection.integerValue) {
+        case 0:
+            [self removeCurrentContentDisplayView];
+            [self addContentDisplayView:[[OverviewController2 alloc]init]];
+            [self setConstraintsForContentDisplayView];
+            break;
+        case 1:
+            [self removeCurrentContentDisplayView];
+            [self addContentDisplayView:[[SmartCollectionViewController alloc]initWithItems:self.movies]];
+            [self setConstraintsForContentDisplayView];
+            break;
+            
+        default:
+            break;
+    }
 }
 @end

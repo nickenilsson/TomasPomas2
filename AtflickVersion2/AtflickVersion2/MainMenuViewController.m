@@ -45,6 +45,7 @@ static NSString * const menuCellIdentifier = @"menuCellIdentifier";
     CellConfigureBlock cellConfiguration = ^(MainMenuTableViewCell *cell, NSString *item){
         cell.label.text = item;
     };
+
     self.menuDataSource = [[ArrayDataSource alloc]initWithItems:self.menuItems cellIdentifier:menuCellIdentifier configureCellBlock:cellConfiguration];
     self.tableView.dataSource = self.menuDataSource;
     

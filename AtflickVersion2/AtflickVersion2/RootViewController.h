@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MainMenuViewController.h"
 #import "ContentViewController.h"
-#import "PopOverController.h"
 #import "InfoViewAnimationController.h"
 #import "MediaPlayerViewController.h"
+#import "SaveToPlaylistViewController.h"
 
-@interface RootViewController : UIViewController <MainMenuDelegate, ContentViewControllerDelegate, InfoViewAnimationControllerDelegate, MediaPlayerViewControllerDelegate>
+
+@interface RootViewController : UIViewController <MainMenuDelegate, ContentViewControllerDelegate, InfoViewAnimationControllerDelegate, MediaPlayerViewControllerDelegate, SaveToPlaylistDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIView *mainPlaceholder;

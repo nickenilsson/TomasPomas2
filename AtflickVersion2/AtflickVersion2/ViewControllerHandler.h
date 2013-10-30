@@ -11,10 +11,6 @@
 
 @interface ViewControllerHandler : NSObject
 
--(ContentViewController *) contentViewControllerCorrespondingToIndex:(int) index;
-
--(UIViewController *) popUpViewForObjectOfType:(int) type;
-
-
++(ContentViewController *) contentViewControllerCorrespondingToIndex:(int) index;
 
 @end

@@ -9886,7 +9886,7 @@ AAEAAQABA</bytes>
 									</object>
 									<string key="IBUIColorCocoaTouchKeyPath">viewFlipsideBackgroundColor</string>
 								</object>
-								<int key="IBUIContentMode">4</int>
+								<int key="IBUIContentMode">2</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
@@ -9894,7 +9894,6 @@ AAEAAQABA</bytes>
 						<string key="NSFrameSize">{184, 194}</string>
 						<reference key="NSSuperview" ref="497251470"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<reference key="IBUIBackgroundColor" ref="836230385"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>

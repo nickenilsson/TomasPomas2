@@ -11,7 +11,6 @@
 @protocol PopOverViewDelegate <NSObject>
 
 -(void) newInfoViewRequestedFromInfoView:(UIViewController *) infoView;
--(void) mediaObjectSelectedInInfoView:(NSString *) media;
 
 @end
 

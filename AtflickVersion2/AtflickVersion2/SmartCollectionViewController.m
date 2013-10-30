@@ -8,7 +8,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SmartCollectionViewController.h"
-#import "ImageCell.h"
 #import "ArrayDataSource.h"
 #import "ListFlowLayout.h"
 #import "GridFlowLayout.h"
@@ -47,7 +46,6 @@ static NSString* const cellIdentifierGrid = @"cellIdentifierGrid";
 
     [self.collectionView registerNib:[GridCell nib] forCellWithReuseIdentifier:cellIdentifierGrid];
     [self.collectionView registerNib:[ListCell nib] forCellWithReuseIdentifier:cellIdentifierList];
-    
     self.collectionView.delegate = (id) self;
     self.collectionView.dataSource = (id)self;
     self.collectionView.collectionViewLayout = [[GridFlowLayout alloc] init];

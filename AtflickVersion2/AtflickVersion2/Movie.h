@@ -18,5 +18,6 @@
 @property (strong, nonatomic) NSString *imageName;
 @property (strong, nonatomic) NSString *imageNameSmall;
 @property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *urlTrailer;
 
 @end

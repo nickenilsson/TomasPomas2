@@ -35,9 +35,4 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) setWidth:(CGFloat) width
-{
-
-}
-
 @end

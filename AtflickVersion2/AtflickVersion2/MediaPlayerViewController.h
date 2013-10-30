@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class Movie;
 @protocol MediaPlayerViewControllerDelegate <NSObject>
 
 -(void) closeMediaPlayerViewController;
@@ -16,8 +17,12 @@
 
 @interface MediaPlayerViewController : UIViewController
 
+-(void) pause;
+-(void) continuePlaying;
+
 - (IBAction)buttonCloseTapped:(id)sender;
-- (id)initWithMediaObject:(NSString *) mediaObject;
+- (id)initWithMediaObject:(Movie *) movie;
+-(void) playMediaObject:(Movie *) movie;
 
 @property (weak, nonatomic) id <MediaPlayerViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *playerPlaceholder;

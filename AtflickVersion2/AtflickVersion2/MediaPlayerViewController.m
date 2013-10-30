@@ -9,10 +9,11 @@
 #import "MediaPlayerViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Movie.h"
 
 @interface MediaPlayerViewController ()
 
-@property (strong, nonatomic) NSURL *mediaUrl;
+@property (strong, nonatomic) Movie *movie;
 @property (strong, nonatomic) MPMoviePlayerController *moviePlayerController;
 
 @end
@@ -24,11 +25,11 @@
     [self.delegate closeMediaPlayerViewController];
 }
 
-- (id)initWithMediaObject:(NSString *) mediaObject
+- (id)initWithMediaObject:(Movie *) movie
 {
     self = [super init];
     if (self) {
-        self.mediaUrl = [NSURL URLWithString:mediaObject];        
+        self.movie = movie;
     }
     return self;
 }
@@ -40,7 +41,8 @@
     // Do any additional setup after loading the view from its nib.
     NSLog(@"viewdidload");
     self.activityIndicator.hidesWhenStopped = YES;
-    [self.activityIndicator startAnimating];
+    
+    /*
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
     
     dispatch_async(myQueue, ^{
@@ -52,6 +54,7 @@
 
         });
     });
+     */
     [self styleView];
     
 }
@@ -74,17 +77,36 @@
     [self.playerPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[moviePlayer]|" options:0 metrics:nil views:@{@"moviePlayer": self.moviePlayerController.view}]];
     [self.playerPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[moviePlayer]|" options:0 metrics:nil views:@{@"moviePlayer": self.moviePlayerController.view}]];
     self.moviePlayerController.scalingMode = MPMovieScalingModeAspectFit;
-
-    [self.moviePlayerController setContentURL:self.mediaUrl];
-
-    dispatch_queue_t myQueue = dispatch_queue_create("My Queue2",NULL);
-
-    dispatch_async(myQueue, ^{
+}
+-(void) playMediaObject:(Movie *) movie
+{
+    NSURL *movieUrl = [NSURL URLWithString:movie.urlTrailer];
+    if (self.moviePlayerController == nil) {
+        dispatch_queue_t myQueue = dispatch_queue_create("My Queue2",NULL);
+        dispatch_async(myQueue, ^{
+            self.moviePlayerController = [[MPMoviePlayerController alloc] init];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setUpMediaPlayer];
+                [self.moviePlayerController setContentURL:movieUrl];
+                [self.moviePlayerController play];
+            });
+        });
+    }else{
+        [self.moviePlayerController setContentURL:movieUrl];
         [self.moviePlayerController play];
-    });
-
-
-
+    }
+}
+-(void) pause
+{
+    if (self.moviePlayerController.playbackState == MPMoviePlaybackStatePlaying) {
+        [self.moviePlayerController pause];
+    }
+}
+-(void) continuePlaying
+{
+    if (self.moviePlayerController.playbackState == MPMoviePlaybackStatePaused) {
+        [self.moviePlayerController play];
+    }
 }
 - (void)didReceiveMemoryWarning
 {

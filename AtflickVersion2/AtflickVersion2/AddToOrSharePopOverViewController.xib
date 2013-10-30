@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToOrSharePopOverViewController">
+            <connections>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="282" height="163"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUs-uw-QSy">
+                    <rect key="frame" x="20" y="14" width="242" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ccT-lN-CxN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Add to favourites"/>
+                    <connections>
+                        <action selector="buttonAddToFavouritesTapped:" destination="-1" eventType="touchUpInside" id="1v1-Q0-Le4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4r-Xn-tce">
+                    <rect key="frame" x="20" y="62" width="242" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="dhn-IP-TjZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Add to playlist"/>
+                    <connections>
+                        <action selector="buttonAddToPlaylistTapped:" destination="-1" eventType="touchUpInside" id="QOD-8p-TNw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnQ-7z-uXr">
+                    <rect key="frame" x="20" y="110" width="242" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="JFC-Uz-7It"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Share"/>
+                    <connections>
+                        <action selector="buttonShareTapped:" destination="-1" eventType="touchUpInside" id="E2f-NN-2lf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="xnQ-7z-uXr" firstAttribute="top" secondItem="t4r-Xn-tce" secondAttribute="bottom" constant="8" id="0BX-Gp-QZd"/>
+                <constraint firstItem="t4r-Xn-tce" firstAttribute="trailing" secondItem="QUs-uw-QSy" secondAttribute="trailing" id="1rm-vh-pOk"/>
+                <constraint firstAttribute="centerY" secondItem="t4r-Xn-tce" secondAttribute="centerY" id="6Hu-DG-BMR"/>
+                <constraint firstItem="xnQ-7z-uXr" firstAttribute="trailing" secondItem="t4r-Xn-tce" secondAttribute="trailing" id="KNa-Ka-GeW"/>
+                <constraint firstItem="t4r-Xn-tce" firstAttribute="leading" secondItem="QUs-uw-QSy" secondAttribute="leading" id="Rzh-Qm-APe"/>
+                <constraint firstItem="t4r-Xn-tce" firstAttribute="top" secondItem="QUs-uw-QSy" secondAttribute="bottom" constant="8" id="SmB-Uy-prB"/>
+                <constraint firstAttribute="trailing" secondItem="QUs-uw-QSy" secondAttribute="trailing" constant="20" id="UWy-DR-jOb"/>
+                <constraint firstItem="QUs-uw-QSy" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="asq-uF-GDf"/>
+                <constraint firstItem="xnQ-7z-uXr" firstAttribute="leading" secondItem="t4r-Xn-tce" secondAttribute="leading" id="xxL-ir-YTF"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

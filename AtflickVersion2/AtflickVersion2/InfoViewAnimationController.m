@@ -7,7 +7,7 @@
 //
 
 #import "InfoViewAnimationController.h"
-#import "FilmPopOverViewController.h"
+#import "FilmInfoViewController.h"
 
 #define MAX_NUMBER_OF_INFOVIEWS 10
 #define DURATION_SLIDE 0.2
@@ -78,6 +78,7 @@
 
 -(void) viewDidLayoutSubviews
 {
+    //change the distances for moving when the superview changes size
     if ([self windowHasChangedSize:self.view.frame.size]) {
         [self updateSavedPositions];
         [self updatePositionsForActiveInfoViews];
@@ -125,6 +126,7 @@
 }
 -(void) setSizeAndAlignVertically:(InfoViewController *) infoViewController
 {
+    NSLog(@"setSizeAndAlignVertically %@", infoViewController);
     [infoViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:infoViewController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0]];
@@ -312,10 +314,6 @@
 -(void) newInfoViewRequestedFromInfoView:(UIViewController *)infoView
 {
     [self presentNewInfoView:(InfoViewController *)infoView];
-}
--(void) mediaObjectSelectedInInfoView:(NSString *)media
-{
-    [self.delegate mediaSelectedForWatching:media];
 }
 -(void) close:(UITapGestureRecognizer *)sender
 {

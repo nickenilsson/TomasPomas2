@@ -7,6 +7,7 @@
 //
 
 #import "PopOverContentViewController.h"
+#import "Colors.h"
 
 @interface PopOverContentViewController ()
 
@@ -58,10 +59,7 @@
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.clearsSelectionOnViewWillAppear = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,13 +136,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [self.delegate popOverMenuItemSelected:[self.menuOptions objectAtIndex:indexPath.item]];
 }
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "TvContentViewController.h"
-#import "ContentOverviewViewController.h"
 #import "ContentDisplayView.h"
 
 @interface TvContentViewController ()
@@ -31,15 +30,7 @@
 {
     [super viewDidLoad];
     
-    self.currentDisplayViewController = [[ContentOverviewViewController alloc]init];
-    [self addChildViewController:self.currentDisplayViewController];
-    [self.currentDisplayViewController setWidth:self.view.frame.size.width];
-    [self.contentPlaceholderScrollView addSubview:self.currentDisplayViewController.view];
-    [self.view sendSubviewToBack:self.contentPlaceholderScrollView];
-    [self.currentDisplayViewController didMoveToParentViewController:self];
-    
-    self.contentPlaceholderScrollView.contentSize = self.currentDisplayViewController.view.bounds.size;
-}
+    }
 
 - (void)didReceiveMemoryWarning
 {
