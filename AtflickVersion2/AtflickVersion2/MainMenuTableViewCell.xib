@@ -29,12 +29,13 @@
                             <constraint firstAttribute="height" constant="29" id="38"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="3" secondAttribute="trailing" priority="1" constant="229" id="Amw-la-UHK"/>
                 <constraint firstItem="10" firstAttribute="leading" secondItem="3" secondAttribute="trailing" constant="8" symbolic="YES" id="CXW-ha-7GB"/>

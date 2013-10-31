@@ -12,7 +12,7 @@
 #define MAX_NUMBER_OF_INFOVIEWS 10
 #define DURATION_SLIDE 0.2
 #define PADDING 20
-#define SIZE_CONSTANT 0.8
+#define SIZE_CONSTANT 0.85
 
 @interface InfoViewAnimationController ()
 
@@ -129,8 +129,8 @@
     NSLog(@"setSizeAndAlignVertically %@", infoViewController);
     [infoViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:infoViewController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:infoViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.8 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:infoViewController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:SIZE_CONSTANT constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:infoViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:SIZE_CONSTANT constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:infoViewController.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     [self.view layoutIfNeeded];
 }

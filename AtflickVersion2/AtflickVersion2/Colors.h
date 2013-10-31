@@ -15,5 +15,6 @@
 
 #define COLOR_BACKGROUND_POPOVER [UIColor colorWithRed:0.24 green:0.24 blue:0.24 alpha:1.0]
     /*#3d3d3d*/
+#define COLOR_HEADLINE [UIColor whiteColor]
 
 #endif

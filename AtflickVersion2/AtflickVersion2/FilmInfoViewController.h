@@ -19,7 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *smallLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *labelDescription;
+@property (weak, nonatomic) IBOutlet UITextView *textViewDescription;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 

@@ -116,7 +116,6 @@
     popOverContent.delegate = (id) self;
     
      self.popOverController = [[UIPopoverController alloc] initWithContentViewController:popOverContent];
-    self.popOverController.backgroundColor = COLOR_BACKGROUND_POPOVER;
     [self.popOverController presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 
 }

@@ -15,6 +15,7 @@
 #import "GridCell.h"
 #import "NotificationNames.h"
 #import "AddToOrSharePopOverViewController.h"
+#import "Colors.h"
 
 static NSString * const cellIdentifier = @"cellIdentifier";
 
@@ -64,14 +65,6 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:PLAY_MEDIA_OBJECT object:self userInfo:userInfo];
 }
--(void) viewDidLayoutSubviews
-{
-    self.labelDescription.numberOfLines = 0;
-    [self.labelDescription sizeToFit];
-        
-    [self.view layoutIfNeeded];
-
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -80,9 +73,20 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     self.view.layer.borderColor = [[UIColor grayColor] CGColor];
     self.view.layer.borderWidth = 1;
     
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:40];
+    UIColor* textColor = COLOR_HEADLINE;
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : textColor,
+                             NSFontAttributeName : font,
+                             NSTextEffectAttributeName : NSTextEffectLetterpressStyle
+                             };
+    
+    NSAttributedString* attrString = [[NSAttributedString alloc]
+                                      initWithString:self.movie.title
+                                      attributes:attrs];
+    self.smallLabel.attributedText = attrString;
+
     self.imageView.image = [UIImage imageNamed:self.movie.imageName];
-    self.smallLabel.text = self.movie.title;
-    self.labelDescription.text = self.movie.description;
+    self.textViewDescription.text = self.movie.description;
     
     self.itemsCollectionView = [MovieDAO getRelatedMovies:self.movie];
     [self.collectionView registerNib:[GridCell nib] forCellWithReuseIdentifier:cellIdentifier];
@@ -96,7 +100,6 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     self.collectionView.dataSource = self.collectionViewDatasource;
     self.collectionView.collectionViewLayout = [[SideScrollLayoutSmall alloc] init];
     [self.view bringSubviewToFront:self.collectionView];
-    
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -104,7 +107,6 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     Movie *movie = [self.itemsCollectionView objectAtIndex:indexPath.item];
     FilmInfoViewController *infoView = [[FilmInfoViewController alloc] initWithMovieObject: movie];
     [self.delegate newInfoViewRequestedFromInfoView:(UIViewController *) infoView];
-    
 }
 - (void)didReceiveMemoryWarning
 {

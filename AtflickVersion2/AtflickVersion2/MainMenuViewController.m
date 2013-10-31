@@ -34,7 +34,7 @@ static NSString * const menuCellIdentifier = @"menuCellIdentifier";
 {
     [super viewDidLoad];
     
-    self.menuItems = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"TV",@"Film",@"Web", @"Account", nil]];
+    self.menuItems = [[NSMutableArray alloc]initWithArray:[NSArray arrayWithObjects:@"Movies",@"Favourites",@"Account", nil]];
     [self setUpTableView];
     
 }
@@ -44,6 +44,8 @@ static NSString * const menuCellIdentifier = @"menuCellIdentifier";
     [self.tableView registerNib:[MainMenuTableViewCell nib] forCellReuseIdentifier:menuCellIdentifier];
     CellConfigureBlock cellConfiguration = ^(MainMenuTableViewCell *cell, NSString *item){
         cell.label.text = item;
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectedBackgroundView.backgroundColor = [UIColor blackColor];
     };
 
     self.menuDataSource = [[ArrayDataSource alloc]initWithItems:self.menuItems cellIdentifier:menuCellIdentifier configureCellBlock:cellConfiguration];
