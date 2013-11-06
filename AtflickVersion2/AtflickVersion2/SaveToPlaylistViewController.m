@@ -7,6 +7,7 @@
 //
 
 #import "SaveToPlaylistViewController.h"
+#import "Colors.h"
 
 @interface SaveToPlaylistViewController ()
 
@@ -32,6 +33,10 @@
     [self createDataForTableView];
     self.tableView.dataSource = (id)self;
     self.tableView.delegate = (id)self;
+    self.view.backgroundColor = COLOR_MAIN_MENU;
+    self.tableView.separatorColor = COLOR_MENU_SEPARATORS;;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
     
 }
 -(void) createDataForTableView
@@ -46,7 +51,6 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
     return 1;
 }
 
@@ -61,8 +65,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+    cell.textLabel.textColor = COLOR_MENU_TEXT;
     cell.textLabel.text = [self.tableViewItems objectAtIndex:indexPath.item];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

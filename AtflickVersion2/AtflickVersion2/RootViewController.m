@@ -64,22 +64,65 @@
 
 -(void) initialSetup
 {
+    [self addMainMenu];
+    self.mainmenuViewController.view.hidden = YES;
     self.contentWindowIsSmall = NO;
     self.shrinkingDistance = -self.view.frame.size.width/3;
     self.maxPanWidth = self.view.bounds.size.width/3;
-    self.maxPanWidthMenu = -self.maxPanWidth / 8;
+    self.maxPanWidthMenu = -self.maxPanWidth / 10;
     [self.mainPlaceholder setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.topBar setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     self.centerOfScreen = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-    [self menuItemSelectedWithIndex:1];
+    [self menuItemSelectedWithIndex:0];
     [self registerForNotifications];
-
+    [self setupCGStyling];
 }
+
 -(void) setupCGStyling
 {
+    /*
+    self.topBar.layer.shadowColor = [[UIColor blackColor]CGColor];
+    self.topBar.layer.shadowOffset = CGSizeMake(0, -2);
+    self.topBar.layer.shadowOpacity = 1;
+    self.topBar.layer.shadowRadius = 0;
+    self.topBar.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.topBar.bounds]CGPath];
+    self.topBar.layer.shouldRasterize = YES;
+    */
+    self.topBar.backgroundColor = COLOR_MAIN_TOP_BAR;
+    self.topBar.layer.borderWidth = 1;
     self.topBar.layer.borderColor = [[UIColor blackColor]CGColor];
-    self.topBar.layer.borderWidth = 4;
+    self.placeholderForMenu.backgroundColor = COLOR_MAIN_MENU;
+    self.mainPlaceholder.layer.shadowColor = [[UIColor blackColor]CGColor];
+    self.mainPlaceholder.layer.shadowOffset = CGSizeMake(-1, 0);
+    self.mainPlaceholder.layer.shadowOpacity = 1;
+    self.mainPlaceholder.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.mainPlaceholder.bounds] CGPath];
+    self.mainPlaceholder.layer.shadowRadius = 1;
+    self.mainPlaceholder.layer.shouldRasterize = YES;
+}
+-(void) addMainMenu
+{
+    if(self.mainmenuViewController == nil){
+        self.mainmenuViewController = [[MainMenuViewController alloc]init];
+        [self addChildViewController:self.mainmenuViewController];
+        [self.mainmenuViewController didMoveToParentViewController:self];
+        [self.placeholderForMenu addSubview:self.mainmenuViewController.view];
+        self.mainmenuViewController.delegate = (id) self;
+        [self setConstraintsForMainMenu];
+    }
+}
+-(void) setConstraintsForMainMenu
+{
+    [self.placeholderForMenu setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.mainmenuViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.placeholderForMenu addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[menu]|" options:0 metrics:nil views:@{@"menu": self.mainmenuViewController.view}]];
+    
+    self.menuLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.mainmenuViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.placeholderForMenu attribute:NSLayoutAttributeLeft multiplier:1 constant:self.maxPanWidthMenu];
+    [self.placeholderForMenu addConstraint:self.menuLeadingConstraint];
+    
+    [self.placeholderForMenu addConstraint:[NSLayoutConstraint constraintWithItem:self.mainmenuViewController.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.placeholderForMenu attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    [self.view layoutIfNeeded];
+    
 }
 - (IBAction)buttonMenuPressed:(id)sender {
     if(self.menuIsActive){
@@ -93,10 +136,10 @@
 {
     CGPoint translation = [sender translationInView:self.view];
     
-    [self addMainMenu];
+    self.mainmenuViewController.view.hidden = NO;
     
     CGFloat newConstantMainPlaceholder = self.placeholderLeadingConstraint.constant + translation.x;
-    CGFloat translationXforMenu = translation.x / 8;
+    CGFloat translationXforMenu = translation.x / 10;
     CGFloat newConstantForMenu = self.menuLeadingConstraint.constant + translationXforMenu;
     
     if (newConstantMainPlaceholder > self.maxPanWidth) {
@@ -138,7 +181,7 @@
 }
 -(void) showMenuWithAnimation
 {
-    [self addMainMenu];
+    self.mainmenuViewController.view.hidden = NO;
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeholderLeadingConstraint.constant = self.maxPanWidth;
         self.menuLeadingConstraint.constant = 0;
@@ -154,7 +197,6 @@
 }
 -(void) hideMenuWithAnimation
 {
-    [self addMainMenu];
     [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeholderLeadingConstraint.constant = 0;
         self.menuLeadingConstraint.constant = self.maxPanWidthMenu;
@@ -163,38 +205,14 @@
     } completion:^(BOOL finished){
         if (finished) {
             self.menuIsActive = NO;
-            [self removeMainMenu];
+            self.mainmenuViewController.view.hidden = YES;
             if (self.mediaPlayerViewController != nil) {
                 [self.mediaPlayerViewController continuePlaying];
             }
-
         }
     }];
 }
--(void) addMainMenu
-{
-    if(self.mainmenuViewController == nil){
-        self.mainmenuViewController = [[MainMenuViewController alloc]init];
-        [self addChildViewController:self.mainmenuViewController];
-        [self.mainmenuViewController didMoveToParentViewController:self];
-        [self.placeholderForMenu addSubview:self.mainmenuViewController.view];
-        self.mainmenuViewController.delegate = (id) self;
-        [self setConstraintsForMainMenu];
-    }
-}
--(void) setConstraintsForMainMenu
-{
-    [self.placeholderForMenu setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.mainmenuViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.placeholderForMenu addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[menu]|" options:0 metrics:nil views:@{@"menu": self.mainmenuViewController.view}]];
-    
-    self.menuLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.mainmenuViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.placeholderForMenu attribute:NSLayoutAttributeLeft multiplier:1 constant:self.maxPanWidthMenu];
-    [self.placeholderForMenu addConstraint:self.menuLeadingConstraint];
-    
-    [self.placeholderForMenu addConstraint:[NSLayoutConstraint constraintWithItem:self.mainmenuViewController.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.placeholderForMenu attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
-    [self.view layoutIfNeeded];
-    
-}
+
 -(void) removeMainMenu
 {
     if (self.mainmenuViewController != nil) {
@@ -227,6 +245,7 @@
     [self.contentPlaceholder addSubview:viewController.view];
     viewController.delegate = (id) self;
     self.currentContentViewController = viewController;
+    [self.mainPlaceholder sendSubviewToBack:self.contentPlaceholder];
 }
 
 -(void)setFrameForContentViewController

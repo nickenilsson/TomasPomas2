@@ -73,17 +73,7 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     self.view.layer.borderColor = [[UIColor grayColor] CGColor];
     self.view.layer.borderWidth = 1;
     
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:40];
-    UIColor* textColor = COLOR_HEADLINE;
-    NSDictionary *attrs = @{ NSForegroundColorAttributeName : textColor,
-                             NSFontAttributeName : font,
-                             NSTextEffectAttributeName : NSTextEffectLetterpressStyle
-                             };
-    
-    NSAttributedString* attrString = [[NSAttributedString alloc]
-                                      initWithString:self.movie.title
-                                      attributes:attrs];
-    self.smallLabel.attributedText = attrString;
+    self.smallLabel.text = self.movie.title;
 
     self.imageView.image = [UIImage imageNamed:self.movie.imageName];
     self.textViewDescription.text = self.movie.description;
@@ -93,7 +83,7 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     self.collectionView.delegate = (id) self;
     
     CellConfigureBlock cellConfiguration = ^(GridCell *cell, Movie *movie){
-        cell.imageView.image = [UIImage imageNamed:movie.imageName];
+        cell.imageView.image = [UIImage imageNamed:movie.imageNameSmall];
     };
     
     self.collectionViewDatasource = [[ArrayDataSource alloc]initWithItems:self.itemsCollectionView cellIdentifier:cellIdentifier configureCellBlock:cellConfiguration];

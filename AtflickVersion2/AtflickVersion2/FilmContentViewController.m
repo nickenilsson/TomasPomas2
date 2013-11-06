@@ -51,14 +51,18 @@
 
     [self setConstraintsForContentDisplayView];
     self.contentOptionsBar.backgroundColor = COLOR_CONTENT_OPTIONS_BAR;
-   
+    [self setUpCgStyling];
 }
 -(void) initialViewSetup
 {
     [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.contentOptionsBar setTranslatesAutoresizingMaskIntoConstraints:NO];
 }
-
+-(void) setUpCgStyling
+{
+    self.contentOptionsBar.layer.borderWidth = 1;
+    self.contentOptionsBar.layer.borderColor = [[UIColor blackColor]CGColor];
+}
 -(void) requestDataToDisplay
 {
     // request data from future movieHtthpClient
@@ -71,7 +75,9 @@
     self.popOverOptions = [NSMutableArray arrayWithCapacity:self.popOverTitles.count];
     for (int i = 0; i < self.popOverTitles.count; i++) {
         [self.popOverOptions addObject:[NSNumber numberWithInt:i]];
+        
     }
+    [self.popOverButton setTitle:[self.popOverTitles objectAtIndex:0] forState:UIControlStateNormal];
 }
 -(void) addContentDisplayView:(ContentDisplayView *) displayView
 {
@@ -116,6 +122,8 @@
     popOverContent.delegate = (id) self;
     
      self.popOverController = [[UIPopoverController alloc] initWithContentViewController:popOverContent];
+    self.popOverController.backgroundColor = COLOR_MAIN_MENU;
+
     [self.popOverController presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 
 }

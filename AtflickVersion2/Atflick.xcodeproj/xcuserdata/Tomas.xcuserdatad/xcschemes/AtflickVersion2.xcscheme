@@ -17,7 +17,7 @@
                BlueprintIdentifier = "C3F74A9317F5B86D009DD81F"
                BuildableName = "AtflickVersion2.app"
                BlueprintName = "AtflickVersion2"
-               ReferencedContainer = "container:AtflickVersion2.xcodeproj">
+               ReferencedContainer = "container:Atflick.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "C3F74AB817F5B86E009DD81F"
                BuildableName = "AtflickVersion2Tests.octest"
                BlueprintName = "AtflickVersion2Tests"
-               ReferencedContainer = "container:AtflickVersion2.xcodeproj">
+               ReferencedContainer = "container:Atflick.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "C3F74A9317F5B86D009DD81F"
             BuildableName = "AtflickVersion2.app"
             BlueprintName = "AtflickVersion2"
-            ReferencedContainer = "container:AtflickVersion2.xcodeproj">
+            ReferencedContainer = "container:Atflick.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "C3F74A9317F5B86D009DD81F"
             BuildableName = "AtflickVersion2.app"
             BlueprintName = "AtflickVersion2"
-            ReferencedContainer = "container:AtflickVersion2.xcodeproj">
+            ReferencedContainer = "container:Atflick.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "C3F74A9317F5B86D009DD81F"
             BuildableName = "AtflickVersion2.app"
             BlueprintName = "AtflickVersion2"
-            ReferencedContainer = "container:AtflickVersion2.xcodeproj">
+            ReferencedContainer = "container:Atflick.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

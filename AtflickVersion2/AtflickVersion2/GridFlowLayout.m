@@ -33,6 +33,8 @@
     CGFloat itemWidth = screenSize.size.width/5.2;
     CGFloat itemHeight = itemWidth * 1.2;
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
+    self.minimumInteritemSpacing = 15;
+    self.minimumLineSpacing = 30;
 }
 
 -(BOOL) shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds

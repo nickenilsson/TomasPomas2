@@ -51,6 +51,7 @@ static NSString * const cellIdentifierRegular = @"cellIdentifierRegular";
     
     self.itemsCollection1 = [MovieDAO getHeadliningMovies];
     [self manipulateArrayForInfiniteScrolling];
+    
     [self.collectionView1 registerNib:[GridCell nib] forCellWithReuseIdentifier:cellIdentifierBanner];
     CellConfigureBlock cellConfigureBanner = ^(GridCell *cell, Movie *movie){
        
@@ -140,15 +141,17 @@ static NSString * const cellIdentifierRegular = @"cellIdentifierRegular";
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    float contentOffsetWhenFullyScrolledRight = self.collectionView1.bounds.size.width * ([self.itemsCollection1 count] -1);
-
-    if (scrollView.contentOffset.x > contentOffsetWhenFullyScrolledRight - 100) {
-        float newHorizontalOffset = scrollView.contentOffset.x - self.collectionView1.frame.size.width * (self.itemsCollection1.count - 2);
-        [scrollView setContentOffset:CGPointMake(newHorizontalOffset, scrollView.contentOffset.y)];
+    if (scrollView == self.collectionView1) {
+        float contentOffsetWhenFullyScrolledRight = self.collectionView1.bounds.size.width * ([self.itemsCollection1 count] -1);
         
-    } else if (scrollView.contentOffset.x < 100 )  {
-        float newHorizontalOffset = scrollView.contentOffset.x + self.collectionView1.bounds.size.width * (self.itemsCollection1.count-2);
-        [scrollView setContentOffset:CGPointMake(newHorizontalOffset, scrollView.contentOffset.y)];
+        if (scrollView.contentOffset.x > contentOffsetWhenFullyScrolledRight - 300) {
+            float newHorizontalOffset = scrollView.contentOffset.x - self.collectionView1.frame.size.width * (self.itemsCollection1.count - 2);
+            [scrollView setContentOffset:CGPointMake(newHorizontalOffset, scrollView.contentOffset.y)];
+            
+        } else if (scrollView.contentOffset.x < 300 )  {
+            float newHorizontalOffset = scrollView.contentOffset.x + self.collectionView1.bounds.size.width * (self.itemsCollection1.count-2);
+            [scrollView setContentOffset:CGPointMake(newHorizontalOffset, scrollView.contentOffset.y)];
+        }
     }
 }
 

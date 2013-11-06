@@ -99,13 +99,20 @@
 -(void) pause
 {
     if (self.moviePlayerController.playbackState == MPMoviePlaybackStatePlaying) {
-        [self.moviePlayerController pause];
+        dispatch_queue_t myQueue = dispatch_queue_create("myQueue", NULL);
+        dispatch_async(myQueue, ^{
+            [self.moviePlayerController pause];
+
+        });
     }
 }
 -(void) continuePlaying
 {
     if (self.moviePlayerController.playbackState == MPMoviePlaybackStatePaused) {
-        [self.moviePlayerController play];
+        dispatch_queue_t myQueue = dispatch_queue_create("myQueue", NULL);
+        dispatch_async(myQueue, ^{
+            [self.moviePlayerController play];
+        });
     }
 }
 - (void)didReceiveMemoryWarning
