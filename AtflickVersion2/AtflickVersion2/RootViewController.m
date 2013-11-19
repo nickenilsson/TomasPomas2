@@ -81,6 +81,7 @@
 
 -(void) setupCGStyling
 {
+
     self.topBar.backgroundColor = COLOR_MAIN_TOP_BAR;
     self.topBar.layer.borderWidth = 1;
     self.topBar.layer.borderColor = [[UIColor blackColor]CGColor];
