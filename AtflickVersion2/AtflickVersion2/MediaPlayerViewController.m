@@ -121,4 +121,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)panHappened:(UIPanGestureRecognizer *)sender {
+}
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50EAC5D3183B8E0B00E735CB /* FloatingMediaPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50EAC5D1183B8E0B00E735CB /* FloatingMediaPlayerViewController.m */; };
+		50EAC5D4183B8E0B00E735CB /* FloatingMediaPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50EAC5D2183B8E0B00E735CB /* FloatingMediaPlayerViewController.xib */; };
 		C30BDE93180BD72300D5C5D3 /* banner-1-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */; };
 		C30BDE94180BD72300D5C5D3 /* banner-2-movies.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */; };
 		C30BDE95180BD72300D5C5D3 /* banner-3-web.png in Resources */ = {isa = PBXBuildFile; fileRef = C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */; };
@@ -99,6 +101,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50EAC5D0183B8E0B00E735CB /* FloatingMediaPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingMediaPlayerViewController.h; sourceTree = "<group>"; };
+		50EAC5D1183B8E0B00E735CB /* FloatingMediaPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingMediaPlayerViewController.m; sourceTree = "<group>"; };
+		50EAC5D2183B8E0B00E735CB /* FloatingMediaPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingMediaPlayerViewController.xib; sourceTree = "<group>"; };
 		C30024C8182260EF004E97EF /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonts.h; sourceTree = "<group>"; };
 		C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-1-tv.png"; sourceTree = "<group>"; };
 		C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-2-movies.png"; sourceTree = "<group>"; };
@@ -243,6 +248,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50EAC5CF183B8DC600E735CB /* FloatingMediaPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				50EAC5D0183B8E0B00E735CB /* FloatingMediaPlayerViewController.h */,
+				50EAC5D1183B8E0B00E735CB /* FloatingMediaPlayerViewController.m */,
+				50EAC5D2183B8E0B00E735CB /* FloatingMediaPlayerViewController.xib */,
+			);
+			name = FloatingMediaPlayer;
+			sourceTree = "<group>";
+		};
 		C30BDE89180BD64600D5C5D3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +494,7 @@
 				C3F74AE417F5BFEF009DD81F /* MainMenuViewController */,
 				C3F74AD717F5BAD9009DD81F /* RootViewController */,
 				C30F8AEC18166C5200C092F1 /* MediaPlayerController */,
+				50EAC5CF183B8DC600E735CB /* FloatingMediaPlayer */,
 				C34B8AA717FC548600014C1E /* ContentViewControllers */,
 				C3BEDDD617FAB4CC00E807D4 /* ViewTypes */,
 				C34BA703180BE75800D26F96 /* InfoViewController */,
@@ -677,6 +693,7 @@
 				C30BDE95180BD72300D5C5D3 /* banner-3-web.png in Resources */,
 				C30BDE96180BD72300D5C5D3 /* cover-1.png in Resources */,
 				C333AFEB1827C6FD00AF892D /* menu.png in Resources */,
+				50EAC5D4183B8E0B00E735CB /* FloatingMediaPlayerViewController.xib in Resources */,
 				C30BDE97180BD72300D5C5D3 /* cover-2.png in Resources */,
 				C30BDE98180BD72300D5C5D3 /* tv-mini-2.png in Resources */,
 				C30BDE99180BD72300D5C5D3 /* tv-mini.png in Resources */,
@@ -728,6 +745,7 @@
 			files = (
 				C3F74AA617F5B86D009DD81F /* main.m in Sources */,
 				C3F74AAA17F5B86D009DD81F /* AppDelegate.m in Sources */,
+				50EAC5D3183B8E0B00E735CB /* FloatingMediaPlayerViewController.m in Sources */,
 				C3F74AB317F5B86E009DD81F /* AtflickVersion2.xcdatamodeld in Sources */,
 				C3F74AD517F5B8BE009DD81F /* RootViewController.m in Sources */,
 				C3F74ADB17F5BC0C009DD81F /* TvContentViewController.m in Sources */,

@@ -42,6 +42,10 @@
 @property (strong, nonatomic) NSLayoutConstraint *menuLeadingConstraint;
 @property (strong, nonatomic) SaveToPlaylistViewController *saveToPlaylistViewController;
 @property (strong, nonatomic) NSLayoutConstraint *saveToPlaylistViewControllerVerticalConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *mediaPlayerLeadingHorizontal;
+@property (strong, nonatomic) NSLayoutConstraint *mediaPlayerBottomVertical;
+@property (strong, nonatomic) UIPanGestureRecognizer *mediaPlayerPanGestureRecognizer;
+
 
 @end
 
@@ -270,7 +274,8 @@
     self.mediaPlayerViewController.delegate = (id) self;
     [self addMediaPlayerControllerToView];
     [self setFrameForMediaPlayerViewController];
-    [self resizeContentWindowBySettingTrailingConstraintTo:self.widthOfMediaPlayer];
+    [self setUpMediaPlayerPanGestureRecognizer];
+
     Movie* movie = (Movie *)[[notification userInfo]valueForKey:NOTIFICATION_OBJECT];
     [self.mediaPlayerViewController playMediaObject:movie];
 }
@@ -283,9 +288,35 @@
 -(void) setFrameForMediaPlayerViewController
 {
     [self.mediaPlayerViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[contentPlaceholder][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"contentPlaceholder": self.contentPlaceholder , @"mediaPlayerViewController": self.mediaPlayerViewController.view}]];
-    [self.mainPlaceholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topBar][mediaPlayerViewController]|" options:0 metrics:nil views:@{@"topBar": self.topBar , @"mediaPlayerViewController" : self.mediaPlayerViewController.view}]];
+    [self.mediaPlayerViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[mediaPlayer(==400)]" options:0 metrics:nil views:@{@"mediaPlayer": self.mediaPlayerViewController.view}]];
+    [self.mediaPlayerViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mediaPlayer(==300)]" options:0 metrics:nil views:@{@"mediaPlayer": self.mediaPlayerViewController.view}]];
     [self.view layoutIfNeeded];
+
+    self.mediaPlayerLeadingHorizontal = [NSLayoutConstraint constraintWithItem:self.mediaPlayerViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.mainPlaceholder attribute:NSLayoutAttributeLeft multiplier:1 constant:20];
+    [self.mainPlaceholder addConstraint:self.mediaPlayerLeadingHorizontal];
+    self.mediaPlayerBottomVertical = [NSLayoutConstraint constraintWithItem:self.mediaPlayerViewController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.mainPlaceholder attribute:NSLayoutAttributeBottom multiplier:1 constant:20];
+    [self.mainPlaceholder addConstraint:self.mediaPlayerBottomVertical];
+    
+}
+-(void) setUpMediaPlayerPanGestureRecognizer
+{
+    if (self.mediaPlayerPanGestureRecognizer == nil) {
+        self.mediaPlayerPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mediaPlayerPanGestureHappened:)];
+    }
+    [self.mediaPlayerViewController.view addGestureRecognizer:self.mediaPlayerPanGestureRecognizer];
+
+}
+-(void) mediaPlayerPanGestureHappened:(UIPanGestureRecognizer *) sender
+{
+    CGPoint translation = [sender translationInView:self.view];
+    CGFloat newHorizontalPosition = self.mediaPlayerLeadingHorizontal.constant + translation.x;
+    CGFloat newVerticalPosition = self.mediaPlayerBottomVertical.constant + translation.y;
+    
+    self.mediaPlayerLeadingHorizontal.constant = newHorizontalPosition;
+    self.mediaPlayerBottomVertical.constant = newVerticalPosition;
+    [self.view layoutIfNeeded];
+    [sender setTranslation:CGPointZero inView:self.view];
+    
 }
 -(void) closeMediaPlayerViewController
 {

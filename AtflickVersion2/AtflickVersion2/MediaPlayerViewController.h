@@ -28,4 +28,5 @@
 @property (weak, nonatomic) IBOutlet UIView *playerPlaceholder;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+
 @end
