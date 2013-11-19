@@ -22,6 +22,7 @@
 		C319892B181A6FBD00E5E1A6 /* AddToOrSharePopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3198929181A6FBD00E5E1A6 /* AddToOrSharePopOverViewController.xib */; };
 		C31F954C180E773D00A26A99 /* InfoViewAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */; };
 		C31F954D180E773D00A26A99 /* InfoViewAnimationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */; };
+		C333AFEB1827C6FD00AF892D /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C333AFEA1827C6FD00AF892D /* menu.png */; };
 		C34B8AAA17FC54B000014C1E /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34B8AA917FC54B000014C1E /* ContentViewController.m */; };
 		C3776573181AA604001CDC5C /* SaveToPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3776571181AA604001CDC5C /* SaveToPlaylistViewController.m */; };
 		C3776574181AA604001CDC5C /* SaveToPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3776572181AA604001CDC5C /* SaveToPlaylistViewController.xib */; };
@@ -98,6 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C30024C8182260EF004E97EF /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonts.h; sourceTree = "<group>"; };
 		C30BDE8C180BD72300D5C5D3 /* banner-1-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-1-tv.png"; sourceTree = "<group>"; };
 		C30BDE8D180BD72300D5C5D3 /* banner-2-movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-2-movies.png"; sourceTree = "<group>"; };
 		C30BDE8E180BD72300D5C5D3 /* banner-3-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-3-web.png"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		C31F9549180E773D00A26A99 /* InfoViewAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewAnimationController.h; sourceTree = "<group>"; };
 		C31F954A180E773D00A26A99 /* InfoViewAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewAnimationController.m; sourceTree = "<group>"; };
 		C31F954B180E773D00A26A99 /* InfoViewAnimationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewAnimationController.xib; sourceTree = "<group>"; };
+		C333AFEA1827C6FD00AF892D /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		C348A541180C232200C49540 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
 		C34B8AA817FC54B000014C1E /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		C34B8AA917FC54B000014C1E /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 		C30BDE89180BD64600D5C5D3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C333AFEA1827C6FD00AF892D /* menu.png */,
 				C3DF6499180D70F900C10F46 /* cover-3.jpg */,
 				C3DF649B180D70F900C10F46 /* cover-5.jpg */,
 				C3DF649C180D70F900C10F46 /* cover-6.jpg */,
@@ -296,6 +300,7 @@
 			children = (
 				C319891F181A560100E5E1A6 /* NotificationNames.h */,
 				C348A541180C232200C49540 /* Colors.h */,
+				C30024C8182260EF004E97EF /* Fonts.h */,
 			);
 			name = "Configuration files";
 			sourceTree = "<group>";
@@ -622,8 +627,13 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Niklas Nilsson";
+				TargetAttributes = {
+					C3F74A9317F5B86D009DD81F = {
+						DevelopmentTeam = U3EK7N6E2K;
+					};
+				};
 			};
-			buildConfigurationList = C3F74A8F17F5B86D009DD81F /* Build configuration list for PBXProject "AtflickVersion2" */;
+			buildConfigurationList = C3F74A8F17F5B86D009DD81F /* Build configuration list for PBXProject "Atflick" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -666,6 +676,7 @@
 				C30BDE94180BD72300D5C5D3 /* banner-2-movies.png in Resources */,
 				C30BDE95180BD72300D5C5D3 /* banner-3-web.png in Resources */,
 				C30BDE96180BD72300D5C5D3 /* cover-1.png in Resources */,
+				C333AFEB1827C6FD00AF892D /* menu.png in Resources */,
 				C30BDE97180BD72300D5C5D3 /* cover-2.png in Resources */,
 				C30BDE98180BD72300D5C5D3 /* tv-mini-2.png in Resources */,
 				C30BDE99180BD72300D5C5D3 /* tv-mini.png in Resources */,
@@ -849,10 +860,13 @@
 		C3F74ACD17F5B86E009DD81F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AtflickVersion2/AtflickVersion2-Prefix.pch";
 				INFOPLIST_FILE = "AtflickVersion2/AtflickVersion2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -860,10 +874,13 @@
 		C3F74ACE17F5B86E009DD81F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AtflickVersion2/AtflickVersion2-Prefix.pch";
 				INFOPLIST_FILE = "AtflickVersion2/AtflickVersion2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -905,7 +922,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C3F74A8F17F5B86D009DD81F /* Build configuration list for PBXProject "AtflickVersion2" */ = {
+		C3F74A8F17F5B86D009DD81F /* Build configuration list for PBXProject "Atflick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3F74ACA17F5B86E009DD81F /* Debug */,

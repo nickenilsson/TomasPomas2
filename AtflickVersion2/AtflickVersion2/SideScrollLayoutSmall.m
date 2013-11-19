@@ -27,7 +27,8 @@
 {
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    self.minimumInteritemSpacing = 20;
+    //self.minimumInteritemSpacing = 20;
+    self.minimumLineSpacing = 35;
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     CGRect collectionViewBounds = self.collectionView.bounds;
     
@@ -37,9 +38,9 @@
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
+
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
 {
-    
     CGFloat offsetAdjustment = MAXFLOAT;
     
     CGRect targetRect = CGRectMake(proposedContentOffset.x, 0.0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);

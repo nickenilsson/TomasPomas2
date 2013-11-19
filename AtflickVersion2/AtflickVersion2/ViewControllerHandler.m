@@ -17,15 +17,15 @@
     ContentViewController *viewController;
     switch (index) {
         case 0:{
-            viewController = [[TvContentViewController alloc] init];
-            break;
-        }
-        case 1:{
             viewController = [[FilmContentViewController alloc] init];
             break;
         }
-        default:
+        case 1:{
             viewController = [[TvContentViewController alloc] init];
+            break;
+        }
+        default:
+            viewController = [[FilmContentViewController alloc] init];
             break;
     }
     return viewController;

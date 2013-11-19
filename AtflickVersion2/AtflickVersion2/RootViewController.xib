@@ -25,25 +25,31 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41" userLabel="PlaceholderForMenu">
                     <rect key="frame" x="0.0" y="0.0" width="518" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.91015625" green="0.91015625" blue="0.91015625" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4" userLabel="mainPlaceholder">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="172" userLabel="contentPlaceholder">
+                            <rect key="frame" x="0.0" y="70" width="1024" height="698"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13" userLabel="topBar">
                             <rect key="frame" x="0.0" y="0.0" width="1024" height="70"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34">
-                                    <rect key="frame" x="20" y="32" width="59" height="38"/>
+                                    <rect key="frame" x="10" y="38" width="30" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="59" id="145"/>
+                                        <constraint firstAttribute="width" constant="30" id="M1K-CK-Ni0"/>
+                                        <constraint firstAttribute="height" constant="25" id="ljk-mH-EJR"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="Menu">
+                                    <state key="normal" backgroundImage="menu.png">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -57,17 +63,10 @@
                             </subviews>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="34" firstAttribute="leading" secondItem="13" secondAttribute="leading" constant="20" symbolic="YES" id="36"/>
                                 <constraint firstAttribute="height" constant="70" id="130"/>
-                                <constraint firstItem="34" firstAttribute="top" secondItem="13" secondAttribute="top" priority="1" constant="32" id="132"/>
-                                <constraint firstItem="34" firstAttribute="top" secondItem="13" secondAttribute="top" constant="32" id="140"/>
-                                <constraint firstItem="34" firstAttribute="centerY" secondItem="13" secondAttribute="centerY" constant="16" id="144"/>
+                                <constraint firstItem="34" firstAttribute="leading" secondItem="13" secondAttribute="leading" constant="10" id="Mku-b2-DE5"/>
+                                <constraint firstAttribute="bottom" secondItem="34" secondAttribute="bottom" constant="7" id="mY2-Pt-FFd"/>
                             </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="172" userLabel="contentPlaceholder">
-                            <rect key="frame" x="0.0" y="70" width="1024" height="698"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -121,4 +120,7 @@
             </connections>
         </swipeGestureRecognizer>
     </objects>
+    <resources>
+        <image name="menu.png" width="23" height="17"/>
+    </resources>
 </document>

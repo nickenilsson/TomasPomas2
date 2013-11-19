@@ -35,7 +35,7 @@
         }
     }
     CGPoint newOffset;
-    if(proposedContentOffset.x >= self.collectionViewContentSize.width - self.collectionView.bounds.size.width){
+    if(proposedContentOffset.x >= self.collectionViewContentSize.width - self.collectionView.bounds.size.width - self.sectionInset.right){
         newOffset = proposedContentOffset;
     }else{
         CGFloat insetLeft = self.sectionInset.left;

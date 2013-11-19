@@ -49,7 +49,9 @@
         CGFloat popoverWidth = largestLabelWidth + 100;
         
         //Set the property to tell the popover container how big this view will be.
-        self.contentSizeForViewInPopover = CGSizeMake(popoverWidth, totalRowsHeight);
+        self.contentSizeForViewInPopover = CGSizeMake(popoverWidth, totalRowsHeight-1);
+        self.tableView.scrollEnabled = NO;
+        self.tableView.separatorColor = COLOR_MENU_SEPARATORS;
 
     }
     return self;
@@ -90,6 +92,11 @@
     }
     
     cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.item];
+    cell.textLabel.textColor = COLOR_MENU_TEXT;
+    UIView *selectedBackground = [[UIView alloc] init];
+    selectedBackground.backgroundColor = [UIColor blackColor];
+    cell.selectedBackgroundView = selectedBackground;
+    
     return cell;
 }
 

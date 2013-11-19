@@ -277,7 +277,7 @@
     infoViewInCenter.view.alpha = 1 - constraintInfoViewInCenter.constant * alphaConstant;
     
     if ([sender state] == UIGestureRecognizerStateEnded) {
-        CGFloat tippingPointDistance = self.view.frame.size.width/3;
+        CGFloat tippingPointDistance = self.view.frame.size.width/7;
         if (constraintInfoViewInCenter.constant > tippingPointDistance) {
             [self goBackToPreviousInfoView];
         }else{
