@@ -9,10 +9,10 @@
 #import "InfoViewAnimationController.h"
 #import "FilmInfoViewController.h"
 
-#define MAX_NUMBER_OF_INFOVIEWS 10
+#define MAX_NUMBER_OF_INFOVIEWS 30
 #define DURATION_SLIDE 0.2
 #define PADDING 20
-#define SIZE_CONSTANT 0.85
+#define SIZE_CONSTANT 0.9
 
 @interface InfoViewAnimationController ()
 
@@ -273,7 +273,7 @@
     }
     
 
-    CGFloat alphaConstant = 0.4 / (self.view.frame.size.width/2);
+    CGFloat alphaConstant = 0.7 / (self.view.frame.size.width/2);
     infoViewInCenter.view.alpha = 1 - constraintInfoViewInCenter.constant * alphaConstant;
     
     if ([sender state] == UIGestureRecognizerStateEnded) {

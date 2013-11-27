@@ -29,7 +29,7 @@
     movie3.title = @"42";
     movie3.description = @"The life story of Jackie Robinson and his history-making signing with the Brooklyn Dodgers under the guidance of team executive Branch Rickey.";
     movie3.urlTrailer = @"http://front1.tele2play.com/liveorigin/cartoonnetwork.stream/playlist.m3u8";
-    [movies addObject:movie3];
+    [movies addObject:movie3]; 
     
     Movie *movie4 = [[Movie alloc] init];
     movie4.imageNameSmall = @"cover-6.jpg";
@@ -54,8 +54,7 @@
 
 +(NSMutableArray *) getMoviesTest
 {
-    NSMutableArray *movies = [NSMutableArray arrayWithCapacity:4];
-    movies = [self getHeadliningMovies];
+    NSMutableArray *movies = [self getHeadliningMovies];
     [movies addObjectsFromArray:[self getHeadliningMovies]];
     [movies addObjectsFromArray:[self getHeadliningMovies]];
     [movies addObjectsFromArray:[self getHeadliningMovies]];
@@ -67,8 +66,7 @@
 
 +(NSMutableArray *) getRelatedMovies:(Movie *) movie
 {
-    NSMutableArray *movies = [NSMutableArray arrayWithCapacity:4];
-    movies = [self getHeadliningMovies];
+    NSMutableArray *movies = [self getHeadliningMovies];
     
     return movies;
 }
